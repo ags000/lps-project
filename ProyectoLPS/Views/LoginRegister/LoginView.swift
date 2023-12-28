@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var proyectoVM: ViewModel
+    @Binding var user: UserEntity?
     @Binding var isLogged: Bool
     @Binding var register: Bool
     @State private var userName: String = ""
@@ -24,7 +25,8 @@ struct LoginView: View {
                     .cornerRadius(10)
                     .offset(x: 0, y: 168.50)
                     .onTapGesture {
-                        if checkIsLogged(userName: userName, password: password, vm: proyectoVM){
+                        if let myUser = checkIsLogged(userName: userName, password: password, vm: proyectoVM){
+                            user = myUser
                             isLogged = true
                         }else{
                            // Alert(title: Text("Usuario o contraseña incorrecta"))
@@ -86,11 +88,13 @@ struct LoginView: View {
     }
 }
 
-func checkIsLogged(userName: String, password: String, vm : ViewModel) -> Bool{
-    if vm.usersArray.firstIndex(where: {($0.userName == userName) && ($0.password == password)}) != nil{
-        return true
+func checkIsLogged(userName: String, password: String, vm : ViewModel) -> UserEntity? {
+    
+    if let index = vm.usersArray.firstIndex(where: {($0.userName == userName) && ($0.password == password)}) {
+        return vm.usersArray[index]
     }
-    return false
+
+    return nil
 }
 
 

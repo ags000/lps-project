@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var proyectoVM : ViewModel
+    @Binding var user: UserEntity?
 
     var body: some View {
         ZStack() {
@@ -21,7 +22,7 @@ struct HomeView: View {
                     .offset(x: 0, y: -286)
             }
             ZStack {
-                Text("Hola de vuelta @Usuario")
+                Text("Hola de vuelta \(user?.userName ?? "Usuario")")
                     .font(Font.custom("Roboto", size: 16).weight(.black))
                     .foregroundColor(.black)
                     .offset(x: -0.50, y: -187)
@@ -247,9 +248,10 @@ struct RankingPlayers: View{
             )
     }
 }
-
+/*
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }
 }
+*/

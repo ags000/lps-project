@@ -17,7 +17,7 @@ class ViewModel: ObservableObject{
 
     init(){
         cargarDatos()
-     //   addUser(name: "Luca", photo: UIImage(systemName: "plus")!, email: "luca@gmail.com", surname: "Gabriel", userName: "LucaTop", password: "123")
+        //addUser(name: "Luca", photo: UIImage(systemName: "plus")!, email: "luca@gmail.com", surname: "Gabriel", userName: "LucaTop", password: "123")
     }
     func cargarDatos(){
         usersArray.removeAll()

@@ -9,17 +9,19 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var proyectoVM : ViewModel
+    @State var user: UserEntity? = nil
     @State var isLogged: Bool = false
     @State var register: Bool = false
     @State var section: Int = 0
     var body: some View {
-      /*  if !isLogged && !register{
-            LoginView(isLogged: $isLogged, register: $register)
+        if !isLogged && !register{
+            LoginView(user: $user, isLogged: $isLogged, register: $register)
         }else if register{
             RegisterView()
-        }else {*/
+            
+        }else {
             TabView(selection: $section){
-                HomeView()
+                HomeView(user : $user)
                     .environmentObject(proyectoVM)
                     .tabItem{
                         Image("home")
@@ -46,7 +48,7 @@ struct MainView: View {
                     }
             }
         
-        //}
+        }
     }
 }
 
