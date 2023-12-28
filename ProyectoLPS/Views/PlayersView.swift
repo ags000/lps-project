@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlayersView: View {
     @State private var response: Response?
+    @State var query : String = ""
     var body: some View {
            VStack{
                ZStack{
@@ -20,9 +21,13 @@ struct PlayersView: View {
                        .foregroundColor(.white)
                        .fontWeight(.bold)
                        .font(.system(size: 32))
-                       .offset(x:-100, y: 20)
+                       .offset(x:-100, y: 40)
+                   BusquedaView(text: $query)
+                       .frame(width: 300)
+                       .offset(x:60, y: 120)
+                   
                }
-                   HStack(alignment: .center,
+               HStack(alignment: .center,
                           spacing: 150){
                        Text("Pos.")
                            .font(.system(size:10))
@@ -37,11 +42,24 @@ struct PlayersView: View {
                           .offset(y: 44)
                if(response?.results != nil){
                    List(){
-                       ForEach(response!.results) {player in
-                           FilaPlayerView(jugador: player)
+                       if(!query.isEmpty){
+                           ForEach(response!.results) {player in
+                               let nombre = player.firstName + player.lastName.replacingOccurrences(of: " ", with: "")
+                               let querySinEspacios = query.replacingOccurrences(of: " ", with: "")
+                               if(nombre.contains(querySinEspacios)){
+                                   FilaPlayerView(jugador: player)
+                               }
+                           }
+                           
+                       }else{
+                           ForEach(response!.results) {player in
+                               FilaPlayerView(jugador: player)
+                           }
+                           
                        }
                        
-                   }.background(.gray)
+                       
+                   }
                }
            }
            .padding(.top, -45.0)
@@ -91,6 +109,28 @@ enum GHError : Error{
     case invalidData
 }
 
+struct BusquedaView: View{
+    @Binding var text: String
+    var body: some View{
+        HStack{
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(text.isEmpty ? Color(UIColor.gray).opacity(0.4) : Color(UIColor.gray).opacity(0.9))
+            TextField("Buscar...", text: $text)
+            Button(){
+                text = ""
+            }label: {
+                Image(systemName: "x.circle")
+            }
+            .opacity(text.isEmpty ? 0.0 : 1.0)
+            
+        }
+        .padding()
+        .background()
+        .frame(width: 250, height: 30)
+        .cornerRadius(7)
+        
+    }
+}
 struct PlayersView_Previews: PreviewProvider {
     static var previews: some View {
         PlayersView()
