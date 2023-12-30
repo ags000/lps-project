@@ -1,13 +1,17 @@
 //
-//  FilaView.swift
+//  FilaPlayerVsView.swift
 //  ProyectoLPS
 //
-//  Created by Aula03 on 27/11/23.
+//  Created by Aula03 on 30/12/23.
 //
 
 import SwiftUI
 
-struct FilaPlayerView: View {
+struct FilaPlayerVsView: View {
+    
+    @Binding var playerId: Int
+    @Binding var displayCard: Bool
+    
     var jugador: Player
 
     var body: some View {
@@ -27,5 +31,16 @@ struct FilaPlayerView: View {
             Text("\(jugador.overallRating)")
                 .frame(width: 50, alignment: .trailing)
         }
+        .onTapGesture{
+            playerId = jugador.id
+            displayCard = false
+        }
     }
 }
+/*
+struct FilaPlayerVsView_Previews: PreviewProvider {
+    static var previews: some View {
+        FilaPlayerVsView()
+    }
+}
+*/
