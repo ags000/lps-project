@@ -11,7 +11,7 @@ struct LoginView: View {
     @EnvironmentObject var proyectoVM: ViewModel
     @Binding var user: UserEntity?
     @Binding var isLogged: Bool
-    @Binding var register: Bool
+    @Binding var isRegister: Bool
     @State private var userName: String = ""
     @State private var password: String = ""
     
@@ -47,7 +47,7 @@ struct LoginView: View {
                         .background(Color(red: 0.97, green: 0.97, blue: 0.97))
                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 2))
                         .disableAutocorrection(true)
-                        
+                        .autocapitalization(.none)
                 }
                 .padding(.top)
                 
@@ -62,6 +62,7 @@ struct LoginView: View {
                         .background(Color(red: 0.97, green: 0.97, blue: 0.97))
                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 2))
                         .disableAutocorrection(true)
+                        .autocapitalization(.none)
                         
                 }
                 .padding(.vertical)
@@ -85,7 +86,7 @@ struct LoginView: View {
                 .cornerRadius(10)
                 
                 Button(action: {
-                    register = true
+                    isRegister = true
                 }){
                     Text("¿No tienes cuenta? Regístrate")
                         .font(Font.custom("Roboto", size: 16).weight(.semibold))
