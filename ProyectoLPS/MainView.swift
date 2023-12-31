@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject var proyectoVM : ViewModel
     @State var user: UserEntity? = nil
-    @State var isLogged: Bool = true
+    @State var isLogged: Bool = false
     @State var register: Bool = false
     @State var section: Int = 0
     var body: some View {
@@ -40,7 +40,7 @@ struct MainView: View {
                         Text("Players")
                     }
                     .tag(2)
-                ProfileView()
+                ProfileView(user : $user, isLogged: $isLogged)
                     .environmentObject(proyectoVM)
                     .tabItem{
                         Image("perfil")
@@ -51,11 +51,8 @@ struct MainView: View {
                     .tabItem{
                         Image("perfil")
                         Text("Vs")
-                        
                     }
-                
             }
-        
         }
     }
 }

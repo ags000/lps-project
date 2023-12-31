@@ -14,7 +14,6 @@ struct HomeView: View {
     var body: some View {
         ZStack() {
             ZStack {
-               
                 Image("logo")
                     .resizable()
                     .frame(width: 250, height: 250)
