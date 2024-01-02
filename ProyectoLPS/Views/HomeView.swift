@@ -33,7 +33,13 @@ struct HomeView: View {
                 Versus()
                 
             }
-            
+            //fondo del navigator
+            HStack{}
+                .foregroundColor(.clear)
+                .frame(width: 430, height: 95)
+                .background(Color(red: 0.96, green: 0.96, blue: 0.96))
+                .cornerRadius(12)
+                .offset(x: 0, y: 405.50)
         }
         .frame(width: 430, height: 932)
         .background(
