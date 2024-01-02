@@ -156,7 +156,7 @@ struct RegisterView: View {
 }
 
 func checkIfIsLogged(userName: String, password: String, email: String, vm : ViewModel) -> Int {
-    if let index = vm.usersArray.firstIndex(where: {($0.userName == userName) && ($0.password == password) || ($0.email == email)}) {
+    if let index = vm.usersArray.firstIndex(where: {($0.userName == userName) || ($0.email == email)}) {
         return index
     }
 

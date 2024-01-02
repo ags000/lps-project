@@ -200,9 +200,9 @@ struct RankingPlayers: View{
                 .foregroundColor(.clear)
                 .frame(width: 76, height: 76)
                 .background(
-                    Image("nose_home")
+                    Image("haland_home")
                 )
-                .offset(x: 79, y: 98)
+                .offset(x: 79, y: 87)
                 .shadow(
                     color: Color(red: 1, green: 1, blue: 1, opacity: 0.50), radius: 40
                 )
@@ -210,9 +210,9 @@ struct RankingPlayers: View{
                 .foregroundColor(.clear)
                 .frame(width: 98, height: 98)
                 .background(
-                    Image("haland_home")
+                    Image("alexia")
                 )
-                .offset(x: -95, y: 87)
+                .offset(x: -95, y: 84)
                 .shadow(
                     color: Color(red: 1, green: 1, blue: 1, opacity: 0.50), radius: 40
                 )
