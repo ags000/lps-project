@@ -122,17 +122,20 @@ struct RankingTeams: View{
                 .foregroundColor(.clear)
                 .frame(width: 64, height: 64)
                 .background(
-                    Image("psg_home")
+                    Image("bayern")
                 )
                 .offset(x: -123, y: -88)
                 .shadow(
                     color: Color(red: 1, green: 1, blue: 1, opacity: 0.50), radius: 40
                 )
-            HStack{}
+            HStack{
+                
+                
+            }
                 .foregroundColor(.clear)
-                .frame(width: 64.19, height: 60)
+                .frame(width: 64, height: 60)
                 .background(
-                    Image("barca_home")
+                    Image("inter")
                 )
                 .offset(x: 0.09, y: -110)
                 .shadow(
@@ -142,7 +145,7 @@ struct RankingTeams: View{
                 .foregroundColor(.clear)
                 .frame(width: 64, height: 66.86)
                 .background(
-                    Image("madrid_home")
+                    Image("barca_home")
                 )
                 .offset(x: 122, y: -76.57)
                 .shadow(
