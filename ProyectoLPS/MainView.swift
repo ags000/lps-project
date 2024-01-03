@@ -13,6 +13,7 @@ struct MainView: View {
     @State var isLogged: Bool = false
     @State var isRegister: Bool = false
     @State var section: Int = 0
+    @State var vistaOG: Bool = false
     var body: some View {
         if !isLogged && !isRegister{
             LoginView(user: $user, isLogged: $isLogged, isRegister: $isRegister)
@@ -20,7 +21,7 @@ struct MainView: View {
             RegisterView(user: $user, isLogged: $isLogged, isRegister: $isRegister)
         }else {
             TabView(selection: $section){
-                HomeView(user : $user)
+                HomeView(user : $user, vistaOG : $vistaOG)
                     .environmentObject(proyectoVM)
                     .tabItem{
                         Image("home")

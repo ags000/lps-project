@@ -10,42 +10,50 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var proyectoVM : ViewModel
     @Binding var user: UserEntity?
-
+    @Binding var vistaOG : Bool
+    
     var body: some View {
-        ZStack() {
-            ZStack {
-                Image("logo")
-                    .resizable()
-                    .frame(width: 250, height: 250)
-                    .foregroundColor(.clear)
-                    .offset(x: 0, y: -286)
+        NavigationView{
+            ZStack() {
+                if vistaOG{
+                    StatsView()
+                }else{
+                    ZStack {
+                        Image("logo")
+                            .resizable()
+                            .frame(width: 250, height: 250)
+                            .foregroundColor(.clear)
+                            .offset(x: 0, y: -286)
+                    }
+                    ZStack {
+                        Text("Hola de vuelta \(user?.userName ?? "Usuario")")
+                            .font(Font.custom("Roboto", size: 16).weight(.black))
+                            .foregroundColor(.black)
+                            .offset(x: -0.50, y: -187)
+                        //Ranking de equipos
+                        RankingTeams(muestraNuevaVista: $vistaOG)
+                        //Ranking de jugadorea
+                        RankingPlayers()
+                        //Ultimo enfrentamiento, solo visible en la segunda app
+                        Versus()
+                        
+                    }
+                    //fondo del navigator
+                    HStack{}
+                        .foregroundColor(.clear)
+                        .frame(width: 430, height: 95)
+                        .background(Color(red: 0.96, green: 0.96, blue: 0.96))
+                        .cornerRadius(12)
+                        .offset(x: 0, y: 405.50)
+                }
             }
-            ZStack {
-                Text("Hola de vuelta \(user?.userName ?? "Usuario")")
-                    .font(Font.custom("Roboto", size: 16).weight(.black))
-                    .foregroundColor(.black)
-                    .offset(x: -0.50, y: -187)
-                //Ranking de equipos
-                RankingTeams()
-                //Ranking de jugadorea
-                RankingPlayers()
-                //Ultimo enfrentamiento, solo visible en la segunda app
-                Versus()
-                
-            }
-            //fondo del navigator
-            HStack{}
-                .foregroundColor(.clear)
-                .frame(width: 430, height: 95)
-                .background(Color(red: 0.96, green: 0.96, blue: 0.96))
-                .cornerRadius(12)
-                .offset(x: 0, y: 405.50)
+            .frame(width: 430, height: 932)
+            .background(
+                Image("fondo-home")
+                    .offset(x: -123, y:-300)
+            )
         }
-        .frame(width: 430, height: 932)
-        .background(
-            Image("fondo-home")
-                .offset(x: -123, y:-300)
-        )
+            
     }
 }
 
@@ -99,6 +107,7 @@ struct Versus: View{
 }
 
 struct RankingTeams: View{
+    @Binding var muestraNuevaVista: Bool
     var body: some View {
         HStack(){
             //Text("Ranking de equipos")
@@ -123,6 +132,9 @@ struct RankingTeams: View{
                 .frame(width: 64, height: 64)
                 .background(
                     Image("bayern")
+                        .onTapGesture {
+                            muestraNuevaVista=true
+                        }
                 )
                 .offset(x: -123, y: -88)
                 .shadow(
@@ -136,6 +148,9 @@ struct RankingTeams: View{
                 .frame(width: 64, height: 60)
                 .background(
                     Image("inter")
+                        .onTapGesture {
+                            muestraNuevaVista=true
+                        }
                 )
                 .offset(x: 0.09, y: -110)
                 .shadow(
@@ -146,6 +161,9 @@ struct RankingTeams: View{
                 .frame(width: 64, height: 66.86)
                 .background(
                     Image("barca_home")
+                        .onTapGesture {
+                            muestraNuevaVista=true
+                        }
                 )
                 .offset(x: 122, y: -76.57)
                 .shadow(
