@@ -16,7 +16,7 @@ struct HomeView: View {
         NavigationView{
             ZStack() {
                 if vistaOG{
-                    StatsView()
+                    StatsView(mostrarNuevaVista: $vistaOG)
                 }else{
                     ZStack {
                         Image("logo")

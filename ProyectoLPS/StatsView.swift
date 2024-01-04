@@ -9,8 +9,19 @@ import SwiftUI
 import Foundation
 
 struct StatsView: View {
+    @Binding var mostrarNuevaVista : Bool
+    @Environment(\.presentationMode) var presentationMode
+    
+    
     var body: some View {
-        HStack(alignment: .center,
+        VStack{
+            Button("Volver"){
+                mostrarNuevaVista=false
+                presentationMode.wrappedValue.dismiss()
+                
+            }
+        }.offset(x: -165,y: -350)
+            HStack(alignment: .center,
                    spacing: 80){
                 Text("Nombre.")
                     .font(.system(size:10))
@@ -24,42 +35,53 @@ struct StatsView: View {
                    .frame(width:1000, height: 36)
                    .background(.gray)
                    .zIndex(1)
-                   .offset(y: -360)
-        HStack{}
-            .foregroundColor(.clear)
-            .frame(width: 430, height: 95)
-            .background(Color(red: 0.96, green: 0.96, blue: 0.96))
-            .cornerRadius(12)
-            .offset(x: 0, y: 405.50)
-    }
-    
+                   .offset(y: -315)
+            HStack{}
+                .foregroundColor(.clear)
+                .frame(width: 430, height: 95)
+                .background(Color(red: 0.96, green: 0.96, blue: 0.96))
+                .cornerRadius(12)
+                .offset(x: 0, y: 405.50)
+        
+            FilaDatos()
+        
+        
 }
 
-
-
-func readCSV() {
-    if let filepath = Bundle.main.path(forResource: "nombre_del_archivo", ofType: "csv") {
-        do {
-            let contents = try String(contentsOfFile: filepath, encoding: .utf8)
-            let rows = contents.components(separatedBy: "\n")
-            
-            for row in rows {
-                let columns = row.components(separatedBy: ",")
-                for column in columns {
-                    // Trabaja con los datos de cada columna como desees
-                    print(column)
+struct FilaDatos : View{
+    @State private var csvData : [[String]] = []
+    var body: some View{
+        ScrollView{
+            VStack {
+                ForEach(csvData, id: \.self) { row in
+                    HStack(alignment: .center, spacing: 80) {
+                        ForEach(row, id: \.self) { column in
+                            Text(column.replacingOccurrences(of: ";", with: "   "))
+                                .padding(8)
+                                .border(Color.gray)
+                        }
+                    }
                 }
             }
-        } catch {
-            print("Error al leer el archivo: \(error)")
         }
-    } else {
-        print("Archivo no encontrado")
+                .onAppear {
+                    if let filepath = Bundle.main.path(forResource: "result", ofType: "csv") {
+                        do {
+                            let contents = try String(contentsOfFile: filepath)
+                            let rows = contents.components(separatedBy: "\n")
+                            self.csvData = rows.map { row in
+                                row.components(separatedBy: ",")
+                            }
+                        } catch {
+                            print("Error al leer el archivo: \(error)")
+                        }
+                    } else {
+                        print("Archivo no encontrado")
+                    }
+                }
+            }
     }
 }
 
-struct StatsView_Previews: PreviewProvider {
-    static var previews: some View {
-        StatsView()
-    }
-}
+
+
