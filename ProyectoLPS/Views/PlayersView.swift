@@ -16,16 +16,15 @@ struct PlayersView: View {
                    Image( "jugadoresfondo")
                        .resizable()
                        .frame(width: 430, height: 255)
-                       .offset(y:68)
+                       .offset(y:8)
                    Text("Jugadores")
                        .foregroundColor(.white)
                        .fontWeight(.bold)
                        .font(.system(size: 32))
-                       .offset(x:-100, y: 40)
+                       .offset(x:-100, y: -20)
                    BusquedaView(text: $query)
                        .frame(width: 300)
-                       .offset(x:60, y: 120)
-                   
+                       .offset(x:60, y: 40)
                }
                HStack(alignment: .center,
                           spacing: 150){
@@ -39,7 +38,7 @@ struct PlayersView: View {
                           .frame(width:1000, height: 36)
                           .background(.gray)
                           .zIndex(1)
-                          .offset(y: 44)
+                          .offset(y: -45)
                if(response?.results != nil){
                    List(){
                        if(!query.isEmpty){
@@ -55,14 +54,17 @@ struct PlayersView: View {
                            ForEach(response!.results) {player in
                                FilaPlayerView(jugador: player)
                            }
-                           
                        }
-                       
-                       
                    }
+                   .offset(y:-85)
                }
-           }
-           .padding(.top, -45.0)
+               //fondo del navigator
+               HStack{}
+                   .foregroundColor(.clear)
+                   .frame(width: 430, height: 95)
+                   .background(Color(red: 0.96, green: 0.96, blue: 0.96))
+                   .cornerRadius(12)
+                   .offset(x: 0, y: 405.50)           }
         .frame(width: 430, height: 932)
         
         .task {
@@ -82,7 +84,7 @@ struct PlayersView: View {
     }
     
     func getPlayer() async throws -> Response{
-        let endpoint = "https://manelme.com/players/"
+        let endpoint = "https://manelme.com/players?page=3/"
         
         guard let url = URL(string: endpoint) else{
             throw GHError.invalidUrl
