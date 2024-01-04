@@ -27,6 +27,7 @@
 		3593B2E72B27699800305621 /* EstadisticaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593B2E62B27699800305621 /* EstadisticaView.swift */; };
 		35C6A3142B14FF990079FB18 /* FetchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C6A3132B14FF990079FB18 /* FetchModel.swift */; };
 		35C6A3162B1503250079FB18 /* FilaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C6A3152B1503250079FB18 /* FilaPlayerView.swift */; };
+		35DEB0592B45D31F005E28F8 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DEB0582B45D31F005E28F8 /* StatsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		3593B2E62B27699800305621 /* EstadisticaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadisticaView.swift; sourceTree = "<group>"; };
 		35C6A3132B14FF990079FB18 /* FetchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchModel.swift; sourceTree = "<group>"; };
 		35C6A3152B1503250079FB18 /* FilaPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilaPlayerView.swift; sourceTree = "<group>"; };
+		35DEB0582B45D31F005E28F8 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				355DCADE2B0BBDEC00C1BE54 /* MainView.swift */,
 				355DCACA2B0BB0CF00C1BE54 /* Assets.xcassets */,
 				355DCACC2B0BB0CF00C1BE54 /* Preview Content */,
+				35DEB0582B45D31F005E28F8 /* StatsView.swift */,
 			);
 			path = ProyectoLPS;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				355DCAE32B0BBE8F00C1BE54 /* CoreDataManager.swift in Sources */,
 				3503AB302B402D72003C535C /* VsView.swift in Sources */,
 				355DCAF32B0BC86C00C1BE54 /* PlayersView.swift in Sources */,
+				35DEB0592B45D31F005E28F8 /* StatsView.swift in Sources */,
 				3503AB332B403907003C535C /* PlayersVsView.swift in Sources */,
 				35C6A3162B1503250079FB18 /* FilaPlayerView.swift in Sources */,
 				3593B2E72B27699800305621 /* EstadisticaView.swift in Sources */,
