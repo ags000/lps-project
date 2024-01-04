@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlayersView: View {
     @State private var response: Response?
+    @State private var numPage : Int = 1
     @State var query : String = ""
     var body: some View {
            VStack{
@@ -16,16 +17,35 @@ struct PlayersView: View {
                    Image( "jugadoresfondo")
                        .resizable()
                        .frame(width: 430, height: 255)
-                       .offset(y:68)
+                       .offset(y:8)
                    Text("Jugadores")
                        .foregroundColor(.white)
                        .fontWeight(.bold)
                        .font(.system(size: 32))
-                       .offset(x:-100, y: 40)
+                       .offset(x:-100, y: -20)
                    BusquedaView(text: $query)
                        .frame(width: 300)
-                       .offset(x:60, y: 120)
-                   
+                       .offset(x:60, y: 40)
+                   Button {
+                       Task {
+                               numPage = numPage + 1
+                               
+                               do {
+                                   response = try await getPlayer(numPage: numPage)
+                               } catch GHError.invalidResponse {
+                                   print("Invalid Response")
+                               } catch GHError.invalidUrl {
+                                   print("Invalid URL")
+                               } catch GHError.invalidData {
+                                   print("Invalid Data")
+                               } catch {
+                                   print("Unexpected Error: \(error)")
+                               }
+                       }
+                   } label: {
+                       Text("Hola")
+                           .foregroundColor(.black)
+                   }
                }
                HStack(alignment: .center,
                           spacing: 150){
@@ -39,9 +59,11 @@ struct PlayersView: View {
                           .frame(width:1000, height: 36)
                           .background(.gray)
                           .zIndex(1)
-                          .offset(y: 44)
+                          .offset(y: -45)
                if(response?.results != nil){
                    List(){
+                       let texto = "Hola \(numPage)"
+                       Text(texto)
                        if(!query.isEmpty){
                            ForEach(response!.results) {player in
                                let nombre = player.firstName + player.lastName.replacingOccurrences(of: " ", with: "")
@@ -55,19 +77,18 @@ struct PlayersView: View {
                            ForEach(response!.results) {player in
                                FilaPlayerView(jugador: player)
                            }
-                           
                        }
-                       
-                       
                    }
+                   .offset(y:-85)
+                   .padding(.bottom, 30)
                }
-           }
-           .padding(.top, -45.0)
+              
+        }
         .frame(width: 430, height: 932)
         
         .task {
             do{
-                response = try await getPlayer()
+                response = try await getPlayer(numPage: numPage)
             }catch GHError.invalidResponse{
                 print("Invalid Response")
             }catch GHError.invalidUrl{
@@ -81,8 +102,8 @@ struct PlayersView: View {
         }
     }
     
-    func getPlayer() async throws -> Response{
-        let endpoint = "https://manelme.com/players/"
+    func getPlayer(numPage: Int) async throws -> Response{
+        let endpoint = "https://manelme.com/players?page=\(numPage)"
         
         guard let url = URL(string: endpoint) else{
             throw GHError.invalidUrl
@@ -95,7 +116,6 @@ struct PlayersView: View {
         do{
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            print("Hola")
             return try decoder.decode(Response.self, from: data)
         }catch{
             throw GHError.invalidData
