@@ -10,6 +10,7 @@
 		3503AB302B402D72003C535C /* VsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503AB2F2B402D72003C535C /* VsView.swift */; };
 		3503AB332B403907003C535C /* PlayersVsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503AB322B403907003C535C /* PlayersVsView.swift */; };
 		3503AB352B403B26003C535C /* FilaPlayerVsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503AB342B403B26003C535C /* FilaPlayerVsView.swift */; };
+		350F584B2B474D0D0064ECF2 /* WinnerVsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350F584A2B474D0D0064ECF2 /* WinnerVsView.swift */; };
 		355DCAC72B0BB0C800C1BE54 /* ProyectoLPSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355DCAC62B0BB0C800C1BE54 /* ProyectoLPSApp.swift */; };
 		355DCACB2B0BB0CF00C1BE54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 355DCACA2B0BB0CF00C1BE54 /* Assets.xcassets */; };
 		355DCACE2B0BB0CF00C1BE54 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 355DCACD2B0BB0CF00C1BE54 /* Preview Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		3503AB2F2B402D72003C535C /* VsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VsView.swift; sourceTree = "<group>"; };
 		3503AB322B403907003C535C /* PlayersVsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersVsView.swift; sourceTree = "<group>"; };
 		3503AB342B403B26003C535C /* FilaPlayerVsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilaPlayerVsView.swift; sourceTree = "<group>"; };
+		350F584A2B474D0D0064ECF2 /* WinnerVsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerVsView.swift; sourceTree = "<group>"; };
 		355DCAC32B0BB0C800C1BE54 /* ProyectoLPS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProyectoLPS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		355DCAC62B0BB0C800C1BE54 /* ProyectoLPSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProyectoLPSApp.swift; sourceTree = "<group>"; };
 		355DCACA2B0BB0CF00C1BE54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				3503AB2F2B402D72003C535C /* VsView.swift */,
 				3503AB322B403907003C535C /* PlayersVsView.swift */,
 				3503AB342B403B26003C535C /* FilaPlayerVsView.swift */,
+				350F584A2B474D0D0064ECF2 /* WinnerVsView.swift */,
 			);
 			path = Versus;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				355DCAF52B0BCB6000C1BE54 /* ProfileView.swift in Sources */,
 				355DCAD72B0BB11400C1BE54 /* ProyectoLPSModel.xcdatamodeld in Sources */,
 				355DCADF2B0BBDEC00C1BE54 /* MainView.swift in Sources */,
+				350F584B2B474D0D0064ECF2 /* WinnerVsView.swift in Sources */,
 				355DCAE72B0BC76A00C1BE54 /* ImagePicker.swift in Sources */,
 				355DCAEB2B0BC7D200C1BE54 /* RegisterView.swift in Sources */,
 				3503AB352B403B26003C535C /* FilaPlayerVsView.swift in Sources */,

@@ -17,7 +17,8 @@ struct VsView: View {
     @State private var secondPlayerId: Int = -1
     
     @State private var displayButtonGo: Bool = false
-    
+    @State private var responseFirstPLayer: Player?
+    @State private var responseSecondPlayer: Player?
     var body: some View {
         
         VStack{
@@ -64,6 +65,21 @@ struct VsView: View {
                                     firstPlayerId = -1
                                     displayButtonGo = false
                                 }
+                                .task{
+                                    do{
+                                        responseFirstPLayer = try await getPlayer(idPlayer: firstPlayerId)
+                                        print(responseFirstPLayer?.firstName)
+                                    }catch GHError.invalidResponse{
+                                        print("Invalid Response")
+                                    }catch GHError.invalidUrl{
+                                        print("Invalid url")
+                                    }catch GHError.invalidData{
+                                        print("Invalid data")
+                                    }catch {
+                                        print("unexcpected error")
+                                    }
+                                    
+                                }
                         }
                         
                         
@@ -98,6 +114,21 @@ struct VsView: View {
                         } else if !displayBottomEmptyCard && secondPlayerId != -1 {
                             AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-shields/en/\(String(secondPlayerId)).png.adapt.122w.png"))
                                 .frame(width: 122, height: 183)
+                                .task{
+                                    do{
+                                        responseSecondPlayer = try await getPlayer(idPlayer: secondPlayerId)
+                                        print(responseSecondPlayer?.firstName)
+                                        
+                                    }catch GHError.invalidResponse{
+                                        print("Invalid Response")
+                                    }catch GHError.invalidUrl{
+                                        print("Invalid url")
+                                    }catch GHError.invalidData{
+                                        print("Invalid data")
+                                    }catch {
+                                        print("unexcpected error")
+                                    }
+                                }
                                 .onTapGesture {
                                     displayBottomEmptyCard = true
                                     secondPlayerId = -1
@@ -117,17 +148,16 @@ struct VsView: View {
                     VStack{
                         
                         if firstPlayerId != -1 && secondPlayerId != -1 && firstPlayerId != secondPlayerId {
-                            Button(action: {
-                                            // Acción que se ejecuta al pulsar el botón
-                                            
-                            }) {
-                                // Contenido visual del botón
+                           
+                            NavigationLink(destination: WinnerVsView(firstPlayer: $responseFirstPLayer, secondPlayer: $responseSecondPlayer)) {
                                 Text("GO")
                                     .padding() // Agrega espacio alrededor del texto
                                     .foregroundColor(.white) // Color del texto
                                     .background(Color.red) // Color de fondo del botón
                                     .cornerRadius(10) // Bordes redondeados
+                                
                             }
+                             
                             
                         }
                     }
@@ -145,7 +175,26 @@ struct VsView: View {
                 
             }
     }
-}
+    
+    func getPlayer(idPlayer: Int) async throws -> Player{
+        let endpoint = "https://manelme.com/players/\(String(idPlayer))"
+        
+        guard let url = URL(string: endpoint) else{
+            throw GHError.invalidUrl
+        }
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw GHError.invalidResponse
+        }
+        do{
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            return try decoder.decode(Player.self, from: data)
+        }catch{
+            throw GHError.invalidData
+        }
+    }}
 
 struct VsView_Previews: PreviewProvider {
     static var previews: some View {

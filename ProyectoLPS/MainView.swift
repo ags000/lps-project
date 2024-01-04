@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject var proyectoVM : ViewModel
     @State var user: UserEntity? = nil
-    @State var isLogged: Bool = false
+    @State var isLogged: Bool = true
     @State var isRegister: Bool = false
     @State var section: Int = 0
     @State var vistaOG: Bool = false

@@ -16,7 +16,11 @@ struct Player: Identifiable, Decodable {
     let firstName: String
     let lastName: String
     let avatarUrl: String
+    let stats: Stats
+    
 }
+
+
 
 struct Page: Decodable {
     let page: Int
@@ -27,7 +31,72 @@ struct Position: Decodable {
     let shortLabel: String
 }
 
+struct Stats: Decodable {
+    let acceleration: Acceleration
+    let aggression: Aggression
+    let agility: Agility
+    let balance: Balance
+    let ballControl: BallControl
+    let defensiveAwareness: DefensiveAwareness
+    let dribbling: Dribbling
+    let freeKickAccuracy: FreeKickAccuracy
+    let longShots: LongShots
+    let sprintSpeed: SprintSpeed
+    let shotPower: ShotPower
+}
+
+
+
+struct Acceleration: Decodable {
+    let value: Int
+}
+
+struct Dribbling: Decodable {
+    let value: Int
+}
+
+struct Aggression: Decodable {
+    let value: Int
+}
+
+struct Agility: Decodable {
+    let value: Int
+}
+
+struct Balance: Decodable {
+    let value: Int
+}
+
+struct BallControl: Decodable {
+    let value: Int
+}
+
+struct DefensiveAwareness: Decodable {
+    let value: Int
+}
+
+struct FreeKickAccuracy: Decodable {
+    let value: Int
+}
+
+struct LongShots: Decodable {
+    let value: Int
+}
+
+struct SprintSpeed: Decodable {
+    let value: Int
+}
+
+struct ShotPower: Decodable {
+    let value: Int
+}
+
+
+
+
 struct Response: Decodable {
     let next: Page
     let results: [Player]
 }
+
+
