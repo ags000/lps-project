@@ -26,10 +26,48 @@ struct PlayersView: View {
                    BusquedaView(text: $query)
                        .frame(width: 300)
                        .offset(x:60, y: 40)
+                   
+               }
+               HStack(alignment: .center, spacing: 150){
+                       Text("Pos.")
+                           .font(.system(size:10))
+                       Text("Jugador")
+                           .font(.system(size:10))
+                       Text("Med.")
+                           .font(.system(size:10))
+                }
+               .frame(width:1000, height: 36)
+               .background(.gray)
+               .zIndex(1)
+               .offset(y: -45)
+               
+               if(response?.results != nil){
+                   List(){
+                        if(!query.isEmpty){
+                           ForEach(response!.results) {player in
+                               let nombre = player.firstName + player.lastName.replacingOccurrences(of: " ", with: "")
+                               let querySinEspacios = query.replacingOccurrences(of: " ", with: "")
+                               if(nombre.contains(querySinEspacios)){
+                                   FilaPlayerView(jugador: player)
+                               }
+                           }
+                       }else{
+                           ForEach(response!.results) {player in
+                               FilaPlayerView(jugador: player)
+                           }
+                       }
+                   }
+                   .offset(y:-85)
+                 //  .padding(.bottom, 20)
+                   
+               }
+               HStack{
+                   
                    Button {
                        Task {
-                               numPage = numPage + 1
-                               
+                           if(numPage != 1){
+                               numPage = numPage - 1
+                           }
                                do {
                                    response = try await getPlayer(numPage: numPage)
                                } catch GHError.invalidResponse {
@@ -43,49 +81,47 @@ struct PlayersView: View {
                                }
                        }
                    } label: {
-                       Text("Hola")
-                           .foregroundColor(.black)
+                       Image(systemName: "arrow.left")
+                           .foregroundColor(.white)
                    }
-               }
-               HStack(alignment: .center,
-                          spacing: 150){
-                       Text("Pos.")
-                           .font(.system(size:10))
-                       Text("Jugador")
-                           .font(.system(size:10))
-                       Text("Med.")
-                           .font(.system(size:10))
-                   }
-                          .frame(width:1000, height: 36)
-                          .background(.gray)
-                          .zIndex(1)
-                          .offset(y: -45)
-               if(response?.results != nil){
-                   List(){
-                       let texto = "Hola \(numPage)"
-                       Text(texto)
-                       if(!query.isEmpty){
-                           ForEach(response!.results) {player in
-                               let nombre = player.firstName + player.lastName.replacingOccurrences(of: " ", with: "")
-                               let querySinEspacios = query.replacingOccurrences(of: " ", with: "")
-                               if(nombre.contains(querySinEspacios)){
-                                   FilaPlayerView(jugador: player)
+                   .padding(.leading)
+                   Spacer()
+                   let texto = "Pág. \(numPage)"
+                   Text(texto)
+                       .bold()
+                       .font(.system(size: 15))
+                       .foregroundColor(.white)
+                   Spacer()
+                   Button {
+                       Task {
+                           if(numPage < 880){
+                               numPage = numPage + 1
+                           }
+                               do {
+                                   response = try await getPlayer(numPage: numPage)
+                               } catch GHError.invalidResponse {
+                                   print("Invalid Response")
+                               } catch GHError.invalidUrl {
+                                   print("Invalid URL")
+                               } catch GHError.invalidData {
+                                   print("Invalid Data")
+                               } catch {
+                                   print("Unexpected Error: \(error)")
                                }
-                           }
-                           
-                       }else{
-                           ForEach(response!.results) {player in
-                               FilaPlayerView(jugador: player)
-                           }
                        }
+                   } label: {
+                       Image(systemName: "arrow.right")
+                           .foregroundColor(.white)
                    }
-                   .offset(y:-85)
-                   .padding(.bottom, 30)
+                   .padding(.trailing)
                }
-              
-        }
+               .frame(width: 150)
+               .background(.gray)
+               //.zIndex(3)
+               .offset(y:-110)
+               .padding()
+           }
         .frame(width: 430, height: 932)
-        
         .task {
             do{
                 response = try await getPlayer(numPage: numPage)
@@ -101,7 +137,7 @@ struct PlayersView: View {
             
         }
     }
-    
+   
     func getPlayer(numPage: Int) async throws -> Response{
         let endpoint = "https://manelme.com/players?page=\(numPage)"
         
