@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct PlayerDetailsView: View {
-    
     var body: some View {
-        VStack{
-            Text("Hola")
-        }
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
