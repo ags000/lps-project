@@ -35,7 +35,10 @@ struct HomeView: View {
                         //Ranking de jugadorea
                         RankingPlayers()
                         //Ultimo enfrentamiento, solo visible en la segunda app
+                        #if LPS2
                         Versus()
+                        #endif
+                    
                         
                     }
                     //fondo del navigator
