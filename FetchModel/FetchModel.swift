@@ -91,7 +91,11 @@ struct ShotPower: Decodable {
     let value: Int
 }
 
-
+struct Equipo: Identifiable, Decodable {
+    let id = UUID()
+    let name: String
+    let image: String
+}
 
 
 struct Response: Decodable {
