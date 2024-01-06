@@ -20,7 +20,7 @@ struct StatsView: View {
                 presentationMode.wrappedValue.dismiss()
                 
             }
-        }.offset(x: -165,y: -350)
+            .offset(x: -140)
             HStack(alignment: .center,
                    spacing: 80){
                 Text("Nombre.")
@@ -35,15 +35,13 @@ struct StatsView: View {
                    .frame(width:1000, height: 36)
                    .background(.gray)
                    .zIndex(1)
-                   .offset(y: -315)
-            HStack{}
-                .foregroundColor(.clear)
-                .frame(width: 430, height: 95)
-                .background(Color(red: 0.96, green: 0.96, blue: 0.96))
-                .cornerRadius(12)
-                .offset(x: 0, y: 405.50)
-        
             FilaDatos()
+        }
+        .offset(y:100)
+            
+          
+        
+     
         
         
 }
