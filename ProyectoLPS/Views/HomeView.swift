@@ -11,11 +11,15 @@ struct HomeView: View {
     @EnvironmentObject var proyectoVM : ViewModel
     @Binding var user: UserEntity?
     @Binding var vistaOG : Bool
+    @State  var vistaMbappe : Bool = false
     
     var body: some View {
         NavigationView{
             ZStack() {
-                if vistaOG{
+                if vistaMbappe{
+                    EstadisticaView(vistaMbappe:$vistaMbappe)
+                }
+                else if vistaOG{
                     StatsView(mostrarNuevaVista: $vistaOG)
                 }else{
                     ZStack {
@@ -33,7 +37,7 @@ struct HomeView: View {
                         //Ranking de equipos
                         RankingTeams(muestraNuevaVista: $vistaOG)
                         //Ranking de jugadorea
-                        RankingPlayers()
+                        RankingPlayers(vistaMbappe: $vistaMbappe)
                         //Ultimo enfrentamiento, solo visible en la segunda app
                         #if LPS2
                         Versus()
@@ -213,6 +217,7 @@ struct RankingTeams: View{
 }
 
 struct RankingPlayers: View{
+    @Binding var vistaMbappe : Bool
     var body: some View {
         HStack(){
             
@@ -251,6 +256,9 @@ struct RankingPlayers: View{
                 .frame(width: 131, height: 123)
                 .background(
                     Image("mbappe_home")
+                        .onTapGesture {
+                            vistaMbappe = true
+                        }
                 )
                 .offset(x: -0.50, y: 73)
                 .shadow(
