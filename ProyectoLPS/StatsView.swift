@@ -52,7 +52,7 @@ struct FilaDatos : View{
         ScrollView{
             VStack {
                 ForEach(csvData, id: \.self) { row in
-                    HStack(alignment: .center, spacing: 80) {
+                    HStack( spacing: 80) {
                         ForEach(row, id: \.self) { column in
                             Text(column.replacingOccurrences(of: ";", with: "   "))
                                 .padding(8)
