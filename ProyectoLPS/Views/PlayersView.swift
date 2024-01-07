@@ -55,14 +55,14 @@ struct PlayersView: View {
                                 let nombre = player.firstName + player.lastName.replacingOccurrences(of: " ", with: "")
                                 let querySinEspacios = query.replacingOccurrences(of: " ", with: "")
                                 if(nombre.contains(querySinEspacios)){
-                                    NavigationLink(destination: PlayerDetailView()){
+                                    NavigationLink(destination: PlayerDetailView(player: player)){
                                         FilaPlayerView(jugador: player)
                                     }
                                 }
                             }
                         }else{
                             ForEach(response!.results) {player in
-                                NavigationLink(destination: PlayerDetailView()){
+                                NavigationLink(destination: PlayerDetailView(player: player)){
                                     FilaPlayerView(jugador: player)
                                 }
                             }
