@@ -12,6 +12,7 @@ struct LoginView: View {
     @Binding var user: UserEntity?
     @Binding var isLogged: Bool
     @Binding var isRegister: Bool
+    @State var noUser: Bool = false
     @State private var userName: String = ""
     @State private var password: String = ""
     
@@ -29,6 +30,19 @@ struct LoginView: View {
                 .frame(width: 350, height: 350)
                 .foregroundColor(.clear)
                 .offset(x: 0, y: -270)
+            
+            if noUser {
+                popUpLogin().zIndex(3)
+                    .offset(y:-300)
+                    .onAppear(){
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                            withAnimation{
+                                noUser = false
+                            }
+                        }
+                    }
+                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)))
+            }
             
             VStack(alignment: .center){
                 Text("Iniciar sesión")
@@ -72,8 +86,7 @@ struct LoginView: View {
                         user = myUser
                         isLogged = true
                     }else{
-                        //Alert(title: Text("Usuario o contraseña incorrecta"))
-                        print("No user")
+                        noUser = true
                     }
                 }) {
                     Text("Iniciar sesión")
@@ -95,7 +108,6 @@ struct LoginView: View {
                 .padding(.top)
             }.padding(.top, 80).offset(y: 10)
         }
-        .frame(width: 430, height: 932)
         .background(.white)
     }
 }
@@ -109,10 +121,19 @@ func checkIsLogged(userName: String, password: String, vm : ViewModel) -> UserEn
     return nil
 }
 
-/*struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
+struct popUpLogin: View{
+    var body: some View{
+        HStack(alignment: .top){
+            Text("Usuario o contraseña incorrectos").bold()
+        }
+        .frame(width: 350, height: 100)
+        .background(Color.red.opacity(0.9))
+        .cornerRadius(10)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(.red, lineWidth: 5)
+        )
     }
-}*/
+}
 
 

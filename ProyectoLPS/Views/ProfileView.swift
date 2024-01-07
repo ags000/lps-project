@@ -11,6 +11,7 @@ struct ProfileView: View {
     @EnvironmentObject var proyectoVM : ViewModel
     @Binding var user: UserEntity?
     @Binding var isLogged: Bool
+    @State var alerta: Bool = false
     
     var body: some View {
         ZStack() {
@@ -50,8 +51,7 @@ struct ProfileView: View {
             
             VStack {
                 Button(action: {
-                    isLogged = false
-                    user = nil
+                    alerta = true
                 }) {
                     Text("Cerrar sesión")
                         .font(Font.custom("Roboto", size: 25))
@@ -61,7 +61,16 @@ struct ProfileView: View {
                 .frame(width: 208, height: 59)
                 .background(Color(red: 0.93, green: 0.44, blue: 0.39))
                 .cornerRadius(10)
-                
+                .alert(isPresented: $alerta, content: {
+                    Alert(title: Text("Cerrar Sesión"),
+                          message: Text("¿Estás seguro que quieres cerrar sesión?"),
+                          primaryButton: Alert.Button.default(Text("Aceptar"),
+                                                             action: {
+                                                                isLogged = false
+                                                                user = nil
+                                                            }),
+                          secondaryButton: .destructive(Text("Cancelar")))
+                })
                 .shadow(
                     color: Color(red: 0, green: 0, blue: 0, opacity: 0.25), radius: 4, y: 4
                 )
