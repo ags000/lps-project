@@ -17,6 +17,7 @@ struct Player: Identifiable, Decodable {
     let lastName: String
     let avatarUrl: String
     let stats: Stats
+    let team: TeamPlayer
     
 }
 
@@ -96,7 +97,12 @@ struct Equipo: Identifiable, Decodable {
     let name: String
     let image: String
 }
-
+struct TeamPlayer: Identifiable, Decodable {
+    let id = UUID()
+    let label: String
+    let imageUrl: String
+    let isPopular: Bool
+}
 struct Response: Decodable {
     let next: Page
     let results: [Player]
