@@ -9,6 +9,9 @@ import SwiftUI
 
 struct WinnerVsView: View {
     
+    @EnvironmentObject var proyectoVM: ViewModel
+    var user: UserEntity?
+    
     @Binding var firstPlayer: Player?
     @Binding var secondPlayer: Player?
     @State private var winner: Int = -1
@@ -217,12 +220,26 @@ struct WinnerVsView: View {
         }
         .task {
             winner = getWinner(player1: firstPlayer!, player2: secondPlayer!)
+            
+            addVersus(user: user, idPlayer1: firstPlayer!.id, idPlayer2: secondPlayer!.id, ganador: winner, vm: proyectoVM)
+            
+            
         }
         
    
     }
         
 }
+
+func addVersus(user: UserEntity?, idPlayer1: Int, idPlayer2: Int, ganador: Int, vm : ViewModel) -> Void {
+    //print("SE DISPARA")
+    
+    vm.addVersus(user: user!, idPlayer1: Int32(idPlayer1), idPlayer2: Int32(idPlayer2), ganador:Int32( ganador))
+    
+    print(vm.vsArray[0])
+ 
+}
+
 
 // 0 --> draw
 // 1 --> player1 has won

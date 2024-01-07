@@ -17,5 +17,12 @@
         <attribute name="photo" optional="YES" attributeType="Binary"/>
         <attribute name="surname" optional="YES" attributeType="String"/>
         <attribute name="userName" optional="YES" attributeType="String"/>
+        <relationship name="vsRelation" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="VersusEntity" inverseName="usersRelation" inverseEntity="VersusEntity"/>
+    </entity>
+    <entity name="VersusEntity" representedClassName="VersusEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="ganador" optional="YES" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <attribute name="idPlayer1" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="idPlayer2" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="usersRelation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="vsRelation" inverseEntity="UserEntity"/>
     </entity>
 </model>

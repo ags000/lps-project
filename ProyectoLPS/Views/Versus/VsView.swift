@@ -9,6 +9,10 @@ import SwiftUI
 
 struct VsView: View {
     
+    @EnvironmentObject var proyectoVM: ViewModel
+    var user: UserEntity?
+    
+    
     @State private var displayUpperEmptyCard: Bool = true
     @State private var displayBottomEmptyCard: Bool = true
     @State private var cardStringUrl: String = "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-shields/en/192119.png.adapt.122w.png"
@@ -30,12 +34,19 @@ struct VsView: View {
                     HStack{
                         Spacer()
                         
-                        Image(systemName: "list.bullet")
-                            .resizable()
-                            .imageScale(.large)
-                            .foregroundColor(.primary)
-                            .frame(width: 30, height: 30) // Tamaño del icono
-                            .padding(.trailing, 20)
+                        NavigationLink(destination: HistoryVsView(user: user)
+                            .environmentObject(proyectoVM)
+                        ) {
+                            
+                            Image(systemName: "list.bullet")
+                                .resizable()
+                                .imageScale(.large)
+                                .foregroundColor(.primary)
+                                .frame(width: 30, height: 30) // Tamaño del icono
+                                .padding(.trailing, 20)
+                        }
+                        
+                        
                                            
                         
                     }
@@ -149,7 +160,9 @@ struct VsView: View {
                         
                         if firstPlayerId != -1 && secondPlayerId != -1 && firstPlayerId != secondPlayerId {
                            
-                            NavigationLink(destination: WinnerVsView(firstPlayer: $responseFirstPLayer, secondPlayer: $responseSecondPlayer)) {
+                            NavigationLink(destination: WinnerVsView(user: user, firstPlayer: $responseFirstPLayer, secondPlayer: $responseSecondPlayer)
+                                .environmentObject(proyectoVM)
+                            ) {
                                 Text("GO")
                                     .padding() // Agrega espacio alrededor del texto
                                     .foregroundColor(.white) // Color del texto
@@ -194,10 +207,19 @@ struct VsView: View {
         }catch{
             throw GHError.invalidData
         }
-    }}
+    }
+    
+    
+    
+    
+    
+    
+}
 
+/*
 struct VsView_Previews: PreviewProvider {
     static var previews: some View {
         VsView()
     }
 }
+*/

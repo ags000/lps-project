@@ -13,6 +13,8 @@
 		350F584B2B474D0D0064ECF2 /* WinnerVsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350F584A2B474D0D0064ECF2 /* WinnerVsView.swift */; };
 		355C79A82B4AEB560091CDBC /* BienvenidaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355C79A72B4AEB560091CDBC /* BienvenidaView.swift */; };
 		355C79A92B4AEB560091CDBC /* BienvenidaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355C79A72B4AEB560091CDBC /* BienvenidaView.swift */; };
+		355C79AB2B4B25320091CDBC /* HistoryVsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355C79AA2B4B25320091CDBC /* HistoryVsView.swift */; };
+		355C79AC2B4B25320091CDBC /* HistoryVsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355C79AA2B4B25320091CDBC /* HistoryVsView.swift */; };
 		355DCAC72B0BB0C800C1BE54 /* ProyectoLPSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355DCAC62B0BB0C800C1BE54 /* ProyectoLPSApp.swift */; };
 		355DCACB2B0BB0CF00C1BE54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 355DCACA2B0BB0CF00C1BE54 /* Assets.xcassets */; };
 		355DCACE2B0BB0CF00C1BE54 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 355DCACD2B0BB0CF00C1BE54 /* Preview Assets.xcassets */; };
@@ -65,6 +67,7 @@
 		3503AB342B403B26003C535C /* FilaPlayerVsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilaPlayerVsView.swift; sourceTree = "<group>"; };
 		350F584A2B474D0D0064ECF2 /* WinnerVsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerVsView.swift; sourceTree = "<group>"; };
 		355C79A72B4AEB560091CDBC /* BienvenidaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BienvenidaView.swift; sourceTree = "<group>"; };
+		355C79AA2B4B25320091CDBC /* HistoryVsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVsView.swift; sourceTree = "<group>"; };
 		355DCAC32B0BB0C800C1BE54 /* LPS1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPS1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		355DCAC62B0BB0C800C1BE54 /* ProyectoLPSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProyectoLPSApp.swift; sourceTree = "<group>"; };
 		355DCACA2B0BB0CF00C1BE54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 				3503AB322B403907003C535C /* PlayersVsView.swift */,
 				3503AB342B403B26003C535C /* FilaPlayerVsView.swift */,
 				350F584A2B474D0D0064ECF2 /* WinnerVsView.swift */,
+				355C79AA2B4B25320091CDBC /* HistoryVsView.swift */,
 			);
 			path = Versus;
 			sourceTree = "<group>";
@@ -326,6 +330,7 @@
 				355DCAE92B0BC7AA00C1BE54 /* LoginView.swift in Sources */,
 				355DCAEF2B0BC82700C1BE54 /* TeamsView.swift in Sources */,
 				355DCAF52B0BCB6000C1BE54 /* ProfileView.swift in Sources */,
+				355C79AB2B4B25320091CDBC /* HistoryVsView.swift in Sources */,
 				355DCAD72B0BB11400C1BE54 /* ProyectoLPSModel.xcdatamodeld in Sources */,
 				355DCADF2B0BBDEC00C1BE54 /* MainView.swift in Sources */,
 				350F584B2B474D0D0064ECF2 /* WinnerVsView.swift in Sources */,
@@ -355,6 +360,7 @@
 				35B5AE4E2B498E2D00599FB3 /* LoginView.swift in Sources */,
 				35B5AE4F2B498E2D00599FB3 /* TeamsView.swift in Sources */,
 				35B5AE502B498E2D00599FB3 /* ProfileView.swift in Sources */,
+				355C79AC2B4B25320091CDBC /* HistoryVsView.swift in Sources */,
 				35B5AE512B498E2D00599FB3 /* ProyectoLPSModel.xcdatamodeld in Sources */,
 				35B5AE522B498E2D00599FB3 /* MainView.swift in Sources */,
 				35B5AE532B498E2D00599FB3 /* WinnerVsView.swift in Sources */,

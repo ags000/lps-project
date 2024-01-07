@@ -46,6 +46,7 @@ struct Stats: Decodable {
     let dribbling: Dribbling
     let freeKickAccuracy: FreeKickAccuracy
     let longShots: LongShots
+    let sho: Tiro
     let sprintSpeed: SprintSpeed
     let shotPower: ShotPower
 }
