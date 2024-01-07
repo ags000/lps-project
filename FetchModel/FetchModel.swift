@@ -38,6 +38,10 @@ struct Stats: Decodable {
     let agility: Agility
     let balance: Balance
     let ballControl: BallControl
+    let def: Defensa
+    let pac: Speed
+    let pas: Pase
+    let phy: Fisico
     let defensiveAwareness: DefensiveAwareness
     let dribbling: Dribbling
     let freeKickAccuracy: FreeKickAccuracy
@@ -46,8 +50,21 @@ struct Stats: Decodable {
     let shotPower: ShotPower
 }
 
-
-
+struct Defensa: Decodable{
+    let value: Int
+}
+struct Fisico: Decodable{
+    let value: Int
+}
+struct Pase: Decodable{
+    let value: Int
+}
+struct Tiro: Decodable{
+    let value: Int
+}
+struct Speed: Decodable{
+    let value: Int
+}
 struct Acceleration: Decodable {
     let value: Int
 }
