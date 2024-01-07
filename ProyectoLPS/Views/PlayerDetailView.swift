@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlayerDetailView: View {
     //@Binding var vistaMbappe : Bool
-    //var player : Player
+    var player : Player
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack() {
@@ -20,33 +20,38 @@ struct PlayerDetailView: View {
                 .background(Color(red: 0, green: 0, blue: 0).opacity(0.50))
                 //.offset(y:-80)
             ZStack{
-                Image("Degradado")
-                    .ignoresSafeArea()
-                    .frame(width: 400, height: 210)
-                    .offset(y:-388)
-                VStack(alignment: .leading){
-                    Text("Kylian Mbappe")
+                   Image("Degradado")
+                       .ignoresSafeArea()
+                       .frame(width: 400, height: 210)
+                       .offset(y:-388)
+                   VStack(alignment: .leading){
+                       Text("\(player.firstName) \(player.lastName)")
+                        .frame(width: 200, alignment: .leading)
                         .fontWeight(.bold)
-                        .font(.system(size: 30))
+                        .font(.system(size: 28))
                         .foregroundColor(.white)
-                    Text("91")
-                        .fontWeight(.bold)
-                        .font(.system(size: 32))
-                        .foregroundColor(Color(red: 0.84, green: 0.84, blue: 0.84))
-                    Text("Media")
-                        .fontWeight(.bold)
-                        .font(.system(size: 22))
-                        .foregroundColor(Color(red: 0.84, green: 0.84, blue: 0.84))
-                }
-                .offset(x:-85, y:-120)
-                //Imagen cabecera
-                AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p231747.png.adapt.150w.png"))
-                    .shadow(color: .black, radius:5)
-                    .offset(x:100, y:-105)
-                    .zIndex(1)
-                AsyncImage(url: URL(string: "https://images.ctfassets.net/rs6bgs1g8dbr/65jMMhRXpQl9A65F6kQtBe/c7b08b18574c48533c1526783bd9b601/73.png"))
-                    .shadow(color: .white, radius:10)
-                    .offset(x:115, y:-170)
+                        .lineLimit(2)
+                        .truncationMode(.tail)
+                       Text("\(player.overallRating)")
+                            .fontWeight(.bold)
+                            .font(.system(size: 32))
+                            .foregroundColor(.white)
+                       Text(player.position.shortLabel)
+                            .fontWeight(.bold)
+                            .font(.system(size: 22))
+                            .foregroundColor(.white)
+                   }
+                    .frame(minWidth: 250, maxWidth: 250)
+                    .offset(x:-70, y:-120)
+                    //Imagen cabecera
+                var avatarUrl = player.avatarUrl.replacingOccurrences(of: "50w", with: "150w")                // Sustituir "50w" por "150w"
+                AsyncImage(url: URL(string:avatarUrl))
+                        .shadow(color: .black, radius:5)
+                        .offset(x:100, y:-105)
+                        .zIndex(1)
+                AsyncImage(url: URL(string: player.team.imageUrl))
+                        .shadow(color: .white, radius:10)
+                        .offset(x:115, y:-170)
             }
             HStack{
                 Text("Estadísticas")
@@ -63,7 +68,7 @@ struct PlayerDetailView: View {
                     //Primer rectangulo
                     VStack(){
                         Image("speed")
-                        Text("97")
+                        Text("\(player.stats.pac.value)")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                         
@@ -77,7 +82,7 @@ struct PlayerDetailView: View {
                     //Segundo rectangulo
                     VStack{
                         Image("tiro")
-                        Text("97")
+                        Text("\(player.stats.sho.value)")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                         
@@ -92,7 +97,7 @@ struct PlayerDetailView: View {
                     //Primer rectangulo
                     VStack(){
                         Image("pase")
-                        Text("97")
+                        Text("\(player.stats.pas.value)")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                     }
@@ -104,7 +109,7 @@ struct PlayerDetailView: View {
                     //Segundo rectangulo
                     VStack{
                         Image("regate")
-                        Text("97")
+                        Text("\(player.stats.dribbling.value)")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                         
@@ -120,7 +125,7 @@ struct PlayerDetailView: View {
                     //Primer rectangulo
                     VStack(){
                         Image("defensa")
-                        Text("97")
+                        Text("\(player.stats.def.value)")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                     }
@@ -132,8 +137,7 @@ struct PlayerDetailView: View {
                     //Segundo rectangulo
                     VStack{
                         Image("fisico")
-                        // .offset(x: -78.27, y: -192.29)
-                        Text("97")
+                        Text("\(player.stats.phy.value)")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                     }
@@ -157,8 +161,9 @@ struct PlayerDetailView: View {
     }
 }
 
-struct PlayerDetailView_Previews: PreviewProvider {
+
+/*struct PlayerDetailView_Previews: PreviewProvider {
     static var previews: some View {
         PlayerDetailView()
     }
-}
+}*/
