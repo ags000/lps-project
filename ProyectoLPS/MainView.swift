@@ -19,7 +19,7 @@ struct MainView: View {
     var body: some View {
         ZStack {
             if vistaWelcome {
-                WelcomeView()
+                BienvenidaView()
                     .onAppear(){
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                             withAnimation{
