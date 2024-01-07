@@ -12,12 +12,20 @@ struct HomeView: View {
     @Binding var user: UserEntity?
     @Binding var vistaOG : Bool
     @State  var vistaMbappe : Bool = false
+    @State var vistaAlexia : Bool = false
+    @State var vistaHaaland : Bool = false
     
     var body: some View {
         NavigationView{
             ZStack() {
-                if vistaMbappe{
-                    EstadisticaView(vistaMbappe:$vistaMbappe)
+                if vistaHaaland{
+                    VistaHaaland(vistaHaaland: $vistaHaaland)
+                }
+                else if vistaAlexia{
+                    VistaAlexia(vistaAlexia: $vistaAlexia)
+                }
+                else if vistaMbappe{
+                    EstadisticaView(vistaMbappe: $vistaMbappe)
                 }
                 else if vistaOG{
                     StatsView(mostrarNuevaVista: $vistaOG)
@@ -37,7 +45,7 @@ struct HomeView: View {
                         //Ranking de equipos
                         RankingTeams(muestraNuevaVista: $vistaOG)
                         //Ranking de jugadorea
-                        RankingPlayers(vistaMbappe: $vistaMbappe)
+                        RankingPlayers(vistaMbappe: $vistaMbappe, vistaAlexia: $vistaAlexia, vistaHaaland: $vistaHaaland)
                         //Ultimo enfrentamiento, solo visible en la segunda app
                         #if LPS2
                         Versus()
@@ -218,6 +226,8 @@ struct RankingTeams: View{
 
 struct RankingPlayers: View{
     @Binding var vistaMbappe : Bool
+    @Binding var vistaAlexia : Bool
+    @Binding var vistaHaaland : Bool
     var body: some View {
         HStack(){
             
@@ -236,6 +246,9 @@ struct RankingPlayers: View{
                 .frame(width: 76, height: 76)
                 .background(
                     Image("haland_home")
+                        .onTapGesture {
+                            vistaHaaland = true
+                        }
                 )
                 .offset(x: 79, y: 87)
                 .shadow(
@@ -246,6 +259,9 @@ struct RankingPlayers: View{
                 .frame(width: 98, height: 98)
                 .background(
                     Image("alexia")
+                        .onTapGesture {
+                            vistaAlexia = true
+                        }
                 )
                 .offset(x: -95, y: 84)
                 .shadow(
