@@ -1,14 +1,14 @@
 //
-//  EstadisticaView.swift
+//  VistaHaaland.swift
 //  ProyectoLPS
 //
-//  Created by Aula03 on 11/12/23.
+//  Created by Aula03 on 7/1/24.
 //
 
 import SwiftUI
 
-struct EstadisticaView: View {
-    @Binding var vistaMbappe : Bool
+struct VistaHaaland: View {
+    @Binding var vistaHaaland : Bool
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack() {
@@ -27,7 +27,7 @@ struct EstadisticaView: View {
                     .frame(width: 400, height: 210)
                     .offset(y:-388)
                 VStack(alignment: .leading){
-                    Text("Kylian Mbappe")
+                    Text("Erling Haaland")
                         .fontWeight(.bold)
                         .font(.system(size: 30))
                         .foregroundColor(.white)
@@ -42,11 +42,11 @@ struct EstadisticaView: View {
                 }
                 .offset(x:-85, y:-120)
                 //Imagen cabecera
-                AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p231747.png.adapt.150w.png"))
+                AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p239085.png.adapt.150w.png"))
                     .shadow(color: .black, radius:5)
                     .offset(x:100, y:-105)
                     .zIndex(1)
-                AsyncImage(url: URL(string: "https://images.ctfassets.net/rs6bgs1g8dbr/65jMMhRXpQl9A65F6kQtBe/c7b08b18574c48533c1526783bd9b601/73.png"))
+                AsyncImage(url: URL(string: "https://images.ctfassets.net/rs6bgs1g8dbr/hn2H64k3KVpJ3Wqpyleus/2d33f6e09f42515c20dd2a70600a3c26/10.png"))
                     .shadow(color: .white, radius:10)
                     .offset(x:115, y:-170)
                 
@@ -60,7 +60,7 @@ struct EstadisticaView: View {
                     .padding(.leading, -160.0)
                 
                 Button("Volver"){
-                    vistaMbappe=false
+                    vistaHaaland=false
                     presentationMode.wrappedValue.dismiss()
                 }
                 
@@ -75,7 +75,7 @@ struct EstadisticaView: View {
                     //Primer rectangulo
                     VStack(){
                         Image("speed")
-                        Text("97")
+                        Text("89")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                         
@@ -89,7 +89,7 @@ struct EstadisticaView: View {
                     //Segundo rectangulo
                     VStack{
                         Image("tiro")
-                        Text("97")
+                        Text("93")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                         
@@ -104,7 +104,7 @@ struct EstadisticaView: View {
                     //Primer rectangulo
                     VStack(){
                         Image("pase")
-                        Text("97")
+                        Text("66")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                     }
@@ -116,7 +116,7 @@ struct EstadisticaView: View {
                     //Segundo rectangulo
                     VStack{
                         Image("regate")
-                        Text("97")
+                        Text("80")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                         
@@ -132,7 +132,7 @@ struct EstadisticaView: View {
                     //Primer rectangulo
                     VStack(){
                         Image("defensa")
-                        Text("97")
+                        Text("45")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                     }
@@ -145,7 +145,7 @@ struct EstadisticaView: View {
                     VStack{
                         Image("fisico")
                         // .offset(x: -78.27, y: -192.29)
-                        Text("97")
+                        Text("88")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                     }
