@@ -14,49 +14,63 @@ struct MainView: View {
     @State var isRegister: Bool = false
     @State var section: Int = 0
     @State var vistaOG: Bool = false
+    @State var vistaWelcome: Bool = true
+        
     var body: some View {
-        if !isLogged && !isRegister{
-            LoginView(user: $user, isLogged: $isLogged, isRegister: $isRegister)
-        }else if isRegister{
-            RegisterView(user: $user, isLogged: $isLogged, isRegister: $isRegister)
-        }else {
-            TabView(selection: $section){
-                HomeView(user : $user, vistaOG : $vistaOG)
-                    .environmentObject(proyectoVM)
-                    .tabItem{
-                        Image("home")
-                        Text("Home")
+        ZStack {
+            if vistaWelcome {
+                WelcomeView()
+                    .onAppear(){
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                            withAnimation{
+                                vistaWelcome = false
+                            }
+                        }
                     }
-                    .tag(0)
-                TeamsView()
-                    .tabItem{
-                        Image("equipo")
-                        Text("Teams")
+                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)))
+            }else{
+                if !isLogged && !isRegister{
+                    LoginView(user: $user, isLogged: $isLogged, isRegister: $isRegister)
+                }else if isRegister{
+                    RegisterView(user: $user, isLogged: $isLogged, isRegister: $isRegister)
+                }else {
+                    TabView(selection: $section){
+                        HomeView(user : $user, vistaOG : $vistaOG).onAppear{vistaOG = false}
+                            .environmentObject(proyectoVM)
+                            .tabItem{
+                                Image("home")
+                                Text("Home")
+                            }
+                            .tag(0)
+                        TeamsView()
+                            .tabItem{
+                                Image("equipo")
+                                Text("Teams")
+                            }
+                            .tag(1)
+                        PlayersView()
+                            .tabItem{
+                                Image("jugadores")
+                                Text("Players")
+                            }
+                            .tag(2)
+                        ProfileView(user : $user, isLogged: $isLogged)
+                            .environmentObject(proyectoVM)
+                            .tabItem{
+                                Image("perfil")
+                                Text("Profile")
+                            }
+                    #if LPS2
+                        VsView()
+                            .environmentObject(proyectoVM)
+                            .tabItem{
+                                Image("perfil")
+                                Text("Vs")
+                            }
+                    #endif
                     }
-                    .tag(1)
-                PlayersView()
-                    .tabItem{
-                        Image("jugadores")
-                        Text("Players")
-                    }
-                    .tag(2)
-                ProfileView(user : $user, isLogged: $isLogged)
-                    .environmentObject(proyectoVM)
-                    .tabItem{
-                        Image("perfil")
-                        Text("Profile")
-                    }
-                #if LPS2
-                VsView()
-                    .environmentObject(proyectoVM)
-                    .tabItem{
-                        Image("perfil")
-                        Text("Vs")
-                    }
-                #endif
+                }
             }
         }
     }
 }
-
-

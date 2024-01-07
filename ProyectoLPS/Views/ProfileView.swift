@@ -66,6 +66,12 @@ struct ProfileView: View {
                     color: Color(red: 0, green: 0, blue: 0, opacity: 0.25), radius: 4, y: 4
                 )
             }.offset(x: 0, y: 200)
-            }
+            //Fondo tab
+            HStack{}
+                .foregroundColor(.clear)
+                .frame(width: 430, height: 95)
+                .background(Color(red: 0.96, green: 0.96, blue: 0.96))
+                .cornerRadius(12)
+                .offset(x: 0, y: 405.50)            }
         }
     }
