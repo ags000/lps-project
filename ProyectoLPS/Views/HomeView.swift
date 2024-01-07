@@ -15,6 +15,7 @@ struct HomeView: View {
     @State var vistaAlexia : Bool = false
     @State var vistaHaaland : Bool = false
     
+    
     var body: some View {
         NavigationView{
             ZStack() {
@@ -48,7 +49,7 @@ struct HomeView: View {
                         RankingPlayers(vistaMbappe: $vistaMbappe, vistaAlexia: $vistaAlexia, vistaHaaland: $vistaHaaland)
                         //Ultimo enfrentamiento, solo visible en la segunda app
                         #if LPS2
-                        Versus()
+                        Versus(user: $user)
                         #endif
                     
                         
@@ -75,6 +76,13 @@ struct HomeView: View {
 
 
 struct Versus: View{
+    @EnvironmentObject var proyectoVM : ViewModel
+    @State var vsArray : [VersusEntity] = []
+    @Binding var user : UserEntity?
+    @State var idPlayer1 : String = ""
+    var idPlayer2 : String = ""
+    
+
     var body: some View {
         HStack(){}
             .foregroundColor(.clear)
@@ -85,15 +93,21 @@ struct Versus: View{
             .shadow(
                 color: Color(red: 0.65, green: 0.19, blue: 0.14, opacity: 0.25), radius: 10
             )
+            .task {
+                vsArray = getVersusArray(user: user, vm: proyectoVM)
+                
+            }
          Text("Último\nenfrentamiento")
              .font(Font.custom("Inter", size: 13).weight(.bold))
              .foregroundColor(.white)
              .offset(x: -0.50, y: 187)
-        HStack{}
+        HStack{
+            
+        }
              .foregroundColor(.clear)
              .frame(width: 114, height: 140)
              .background(
-                 AsyncImage(url: URL(string: "https://via.placeholder.com/114x140"))
+                AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p\(String(describing: vsArray.last?.idPlayer2)).png.adapt.50w.png"))
              )
              .cornerRadius(12)
              .offset(x: 130, y: 230)
@@ -104,7 +118,7 @@ struct Versus: View{
              .foregroundColor(.clear)
              .frame(width: 114, height: 140)
              .background(
-                 AsyncImage(url: URL(string: "https://via.placeholder.com/114x140"))
+                 AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p\(String(describing: vsArray.last?.idPlayer1)).png.adapt.50w.png"))
              )
              .cornerRadius(12)
              .offset(x: -130, y: 230)
@@ -287,4 +301,19 @@ struct RankingPlayers: View{
            
         }
     }
+    
+    func getVersusArray(user: UserEntity?, vm: ViewModel) -> [VersusEntity]{
+        
+        
+        if user == nil {
+            return []
+        }
+        
+        return vm.vsArray.filter{ versus in
+            return versus.usersRelation == user
+        }
+        
+
+    }
+
 }
