@@ -11,238 +11,160 @@ struct EstadisticaView: View {
     @Binding var vistaMbappe : Bool
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        ZStack() {
+        VStack() {
+            Image("campo-futbol")
+                .ignoresSafeArea()
+                .padding(.top, 150.0)
+                .frame(width: 400, height: 210)
+                .background(Color(red: 0, green: 0, blue: 0).opacity(0.50))
+                //.offset(y:-80)
             
-                ZStack {
-                    Image("campo-futbol")
-                        .foregroundColor(.clear)
-                        .frame(width: 430, height: 263)
-                        .background(Color(red: 0, green: 0, blue: 0).opacity(0.50))
-                        .offset(x: 0, y: -341.50)
-                    
-                }
-                ZStack {
+            
+            
+            ZStack{
+                Image("Degradado")
+                    .ignoresSafeArea()
+                    .frame(width: 400, height: 210)
+                    .offset(y:-388)
+                VStack(alignment: .leading){
                     Text("Kylian Mbappe")
-                        .font(Font.custom("Roboto", size: 40))
+                        .fontWeight(.bold)
+                        .font(.system(size: 30))
                         .foregroundColor(.white)
-                        .offset(x: -60.50, y: -342)
                     Text("91")
-                        .font(Font.custom("Roboto", size: 24))
+                        .fontWeight(.bold)
+                        .font(.system(size: 32))
                         .foregroundColor(Color(red: 0.84, green: 0.84, blue: 0.84))
-                        .offset(x: -180, y: -310)
                     Text("Media")
-                        .font(Font.custom("Roboto", size: 14))
+                        .fontWeight(.bold)
+                        .font(.system(size: 22))
                         .foregroundColor(Color(red: 0.84, green: 0.84, blue: 0.84))
-                        .offset(x: -174.50, y: -284)
-                    
-                        Button("Volver"){
-                            vistaMbappe=false
-                            presentationMode.wrappedValue.dismiss()
-                            
-                        }
-                        .offset(x: -140, y: -200)
                 }
-                ZStack{
-                    //Imagen cabecera
-                    HStack{}
-                        .foregroundColor(.clear)
-                        .frame(width: 183, height: 172)
-                        .background(
-                            Image("mbappe_home")
-                        )
-                        .offset(x: 123.50, y: -296)
-                    ZStack() {
-                        ZStack {
-                            //Rectangulo de fondo
-                            HStack{}
-                                .foregroundColor(.clear)
-                                .frame(width: 339.34, height: 522.13)
-                                .background(Color(red: 1, green: 1, blue: 1).opacity(0.50))
-                                .cornerRadius(15)
-                                .offset(x: 0, y: 0)
-                                .shadow(
-                                    color: Color(red: 0, green: 0, blue: 0, opacity: 0.20), radius: 4
-                                )
-                            //Primer rectangulo
-                            HStack{}
-                                .foregroundColor(.clear)
-                                .frame(width: 103.16, height: 123.97)
-                                .background(Color(red: 0.99, green: 0.99, blue: 0.99))
-                                .cornerRadius(12)
-                                .offset(x: -80.08, y: -164.69)
-                                .shadow(
-                                    color: Color(red: 0.65, green: 0.19, blue: 0.14, opacity: 0.25), radius: 10
-                                )
-                            //Primer dato
-                            HStack{}
-                                .foregroundColor(.clear)
-                                .frame(width: 63.34, height: 56.10)
-                                .background(
-                                    AsyncImage(url: URL(string: "https://via.placeholder.com/63x56"))
-                                )
-                                .offset(x: -78.27, y: -192.29)
-                            
-                            Text("97")
-                                .font(Font.custom("Roboto", size: 24))
-                                .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
-                                .offset(x: -80.54, y: -131.21)
-                            
-                            
-                            // Cuadrado 2x1
-                            HStack{}
-                                .foregroundColor(.clear)
-                                .frame(width: 103.16, height: 123.97)
-                                .background(Color(red: 0.99, green: 0.99, blue: 0.99))
-                                .cornerRadius(12)
-                                .offset(x: -79.18, y: -2.71)
-                                .shadow(
-                                    color: Color(red: 0.65, green: 0.19, blue: 0.14, opacity: 0.25), radius: 10
-                                )
-                        }
-                        ZStack{
-                            Text("80")
-                                .font(Font.custom("Roboto", size: 24))
-                                .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
-                                .offset(x: -79.63, y: 30.77)
-                            //Cuadrado 2x2
-                            HStack{}
-                                .foregroundColor(.clear)
-                                .frame(width: 103.16, height: 123.97)
-                                .background(Color(red: 0.99, green: 0.99, blue: 0.99))
-                                .cornerRadius(12)
-                                .offset(x: 76.46, y: -2.71)
-                                .shadow(
-                                    color: Color(red: 0.65, green: 0.19, blue: 0.14, opacity: 0.25), radius: 10
-                                )
-                            
-                            Text("92")
-                                .font(Font.custom("Roboto", size: 24))
-                                .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
-                                .offset(x: 76.01, y: 30.77)
-                            //Cuadrado 3x1
-                            HStack{}
-                                .foregroundColor(.clear)
-                                .frame(width: 103.16, height: 123.97)
-                                .background(Color(red: 0.99, green: 0.99, blue: 0.99))
-                                .cornerRadius(12)
-                                .offset(x: -79.18, y: 153.83)
-                                .shadow(
-                                    color: Color(red: 0.65, green: 0.19, blue: 0.14, opacity: 0.25), radius: 10
-                                )
-                        }
-                        ZStack {
-                            Text("36")
-                                .font(Font.custom("Roboto", size: 24))
-                                .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
-                                .offset(x: -79.63, y: 188.22)
-                            //Cuadrado 3x2
-                            HStack{}
-                                .foregroundColor(.clear)
-                                .frame(width: 103.16, height: 123.97)
-                                .background(Color(red: 0.99, green: 0.99, blue: 0.99))
-                                .cornerRadius(12)
-                                .offset(x: 76.46, y: 153.83)
-                                .shadow(
-                                    color: Color(red: 0.65, green: 0.19, blue: 0.14, opacity: 0.25), radius: 10
-                                )
-                            Text("78")
-                                .font(Font.custom("Roboto", size: 24))
-                                .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
-                                .offset(x: 77.82, y: 188.22)
-                            //Cuadrado 1x2
-                            HStack{}
-                                .foregroundColor(.clear)
-                                .frame(width: 103.16, height: 123.97)
-                                .background(Color(red: 0.99, green: 0.99, blue: 0.99))
-                                .cornerRadius(12)
-                                .offset(x: 74.66, y: -164.69)
-                                .shadow(
-                                    color: Color(red: 0.65, green: 0.19, blue: 0.14, opacity: 0.25), radius: 10
-                                )
-                            
-                            Text("90")
-                                .font(Font.custom("Roboto", size: 24))
-                                .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
-                                .offset(x: 74.20, y: -131.21)
-                            HStack{}
-                                .foregroundColor(.clear)
-                                .frame(width: 59.72, height: 59.72)
-                                .background(
-                                    AsyncImage(url: URL(string: "https://via.placeholder.com/60x60"))
-                                )
-                                .offset(x: -80.08, y: -30.31)
-                            HStack{}
-                                .foregroundColor(.clear)
-                                .frame(width: 43.44, height: 65.15)
-                                .background(
-                                    AsyncImage(url: URL(string: "https://via.placeholder.com/43x65"))
-                                )
-                                .offset(x: 76.46, y: -30.31)
-                            HStack{}
-                                .foregroundColor(.clear)
-                                .frame(width: 70.58, height: 76.92)
-                                .background(
-                                    AsyncImage(url: URL(string: "https://via.placeholder.com/71x77"))
-                                )
-                                .offset(x: 78.27, y: 130.31)
-                            HStack{}
-                                .foregroundColor(.clear)
-                                .frame(width: 52.48, height: 52.48)
-                                .background(
-                                    AsyncImage(url: URL(string: "https://via.placeholder.com/52x52"))
-                                )
-                                .offset(x: -79.18, y: 130.76)
-                        }
-                        ZStack {
-                            HStack{}
-                                .foregroundColor(.clear)
-                                .frame(width: 57.91, height: 57.91)
-                                .background(
-                                    AsyncImage(url: URL(string: "https://via.placeholder.com/58x58"))
-                                )
-                                .offset(x: 76.46, y: -188.67)
-                            
-                        }
+                .offset(x:-85, y:-120)
+                //Imagen cabecera
+                AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p231747.png.adapt.150w.png"))
+                    .shadow(color: .black, radius:5)
+                    .offset(x:100, y:-105)
+                    .zIndex(1)
+                AsyncImage(url: URL(string: "https://images.ctfassets.net/rs6bgs1g8dbr/65jMMhRXpQl9A65F6kQtBe/c7b08b18574c48533c1526783bd9b601/73.png"))
+                    .shadow(color: .white, radius:10)
+                    .offset(x:115, y:-170)
+                
+                
+                
+                
+            }
+            HStack{
+                Text("Estadísticas")
+                    .font(.system(size:15))
+                    .padding(.leading, -160.0)
+                
+                Button("Volver"){
+                    vistaMbappe=false
+                    presentationMode.wrappedValue.dismiss()
+                }
+                
+                }
+                .frame(width:1000, height: 36)
+                .background(.gray)
+                .zIndex(1)
+                .offset(y: -150)
+
+            VStack(spacing: 30.0){
+                HStack(spacing: 50.0){
+                    //Primer rectangulo
+                    VStack(){
+                        Image("speed")
+                        Text("97")
+                            .font(Font.custom("Roboto", size: 24))
+                            .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
+                        
                     }
-                    .frame(width: 339.34, height: 522.13)
-                    .offset(x: -0.33, y: 76.07)
-                    Text("Estadísticas")
-                        .font(Font.custom("Roboto", size: 24).weight(.bold))
-                        .foregroundColor(Color(red: 0.84, green: 0.84, blue: 0.84))
-                        .offset(x: -130.50, y: -239)
-                    //Diagrama de barras
-                    ZStack() {
-                        Rectangle()
-                            .foregroundColor(.clear)
-                            .frame(width: 7, height: 29)
-                            .background(Color(red: 0.84, green: 0.84, blue: 0.84))
-                            .cornerRadius(1)
-                            .offset(x: -15, y: 0)
-                        Rectangle()
-                            .foregroundColor(.clear)
-                            .frame(width: 7, height: 21)
-                            .background(Color(red: 0.84, green: 0.84, blue: 0.84))
-                            .cornerRadius(1)
-                            .offset(x: -5, y: 4)
-                        Rectangle()
-                            .foregroundColor(.clear)
-                            .frame(width: 7, height: 27)
-                            .background(Color(red: 0.84, green: 0.84, blue: 0.84))
-                            .cornerRadius(1)
-                            .offset(x: 5, y: 1)
-                        Rectangle()
-                            .foregroundColor(.clear)
-                            .frame(width: 7, height: 12)
-                            .background(Color(red: 0.84, green: 0.84, blue: 0.84))
-                            .cornerRadius(1)
-                            .offset(x: 15, y: 8.50)
+                    .foregroundColor(.clear)
+                    .frame(width: 103.16, height: 123.97)
+                    .background(Color(red: 0.99, green: 0.99, blue: 0.99))
+                    .cornerRadius(12)
+                    .shadow(radius: 3)
+                   // Spacer()
+                    //Segundo rectangulo
+                    VStack{
+                        Image("tiro")
+                        Text("97")
+                            .font(Font.custom("Roboto", size: 24))
+                            .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
+                        
                     }
-                    .frame(width: 37, height: 29)
-                    .offset(x: -25.50, y: -233.50)
+                    .foregroundColor(.clear)
+                    .frame(width: 103.16, height: 123.97)
+                    .background(Color(red: 0.99, green: 0.99, blue: 0.99))
+                    .cornerRadius(12)
+                    .shadow(radius: 3)
+                }
+                HStack(spacing: 50.0){
+                    //Primer rectangulo
+                    VStack(){
+                        Image("pase")
+                        Text("97")
+                            .font(Font.custom("Roboto", size: 24))
+                            .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
+                    }
+                    .foregroundColor(.clear)
+                    .frame(width: 103.16, height: 123.97)
+                    .background(Color(red: 0.99, green: 0.99, blue: 0.99))
+                    .cornerRadius(12)
+                    .shadow(radius: 3)
+                    //Segundo rectangulo
+                    VStack{
+                        Image("regate")
+                        Text("97")
+                            .font(Font.custom("Roboto", size: 24))
+                            .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
+                        
+                    }
+                    .foregroundColor(.clear)
+                    .frame(width: 103.16, height: 123.97)
+                    .background(Color(red: 0.99, green: 0.99, blue: 0.99))
+                    .cornerRadius(12)
+                    .shadow(radius: 3)
+
+                }
+                HStack(spacing: 50.0){
+                    //Primer rectangulo
+                    VStack(){
+                        Image("defensa")
+                        Text("97")
+                            .font(Font.custom("Roboto", size: 24))
+                            .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
+                    }
+                    .foregroundColor(.clear)
+                    .frame(width: 103.16, height: 123.97)
+                    .background(Color(red: 0.99, green: 0.99, blue: 0.99))
+                    .cornerRadius(12)
+                    .shadow(radius: 3)
+                    //Segundo rectangulo
+                    VStack{
+                        Image("fisico")
+                        // .offset(x: -78.27, y: -192.29)
+                        Text("97")
+                            .font(Font.custom("Roboto", size: 24))
+                            .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
+                    }
+                    .foregroundColor(.clear)
+                    .frame(width: 103.16, height: 123.97)
+                    .background(Color(red: 0.99, green: 0.99, blue: 0.99))
+                    .cornerRadius(12)
+                    .shadow(radius: 3)
                 }
             }
-            .frame(width: 430, height: 932)
+            //.foregroundColor(.clear)
+            .frame(width: 350, height: 470)
             .background(.white)
+            .cornerRadius(15)
+            .shadow(radius: 3)
+            .offset(y: -150)
+            
         }
+        .frame(width: 430, height: 932.0)
+            .background(.white)
     }
-
+}

@@ -11,6 +11,10 @@
 		3503AB332B403907003C535C /* PlayersVsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503AB322B403907003C535C /* PlayersVsView.swift */; };
 		3503AB352B403B26003C535C /* FilaPlayerVsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503AB342B403B26003C535C /* FilaPlayerVsView.swift */; };
 		350F584B2B474D0D0064ECF2 /* WinnerVsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350F584A2B474D0D0064ECF2 /* WinnerVsView.swift */; };
+		3539EC0C2B4B195300C421D7 /* VistaAlexia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3539EC0B2B4B195300C421D7 /* VistaAlexia.swift */; };
+		3539EC0D2B4B195300C421D7 /* VistaAlexia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3539EC0B2B4B195300C421D7 /* VistaAlexia.swift */; };
+		3539EC0F2B4B1CFC00C421D7 /* VistaHaaland.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3539EC0E2B4B1CFC00C421D7 /* VistaHaaland.swift */; };
+		3539EC102B4B1CFC00C421D7 /* VistaHaaland.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3539EC0E2B4B1CFC00C421D7 /* VistaHaaland.swift */; };
 		355C79A82B4AEB560091CDBC /* BienvenidaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355C79A72B4AEB560091CDBC /* BienvenidaView.swift */; };
 		355C79A92B4AEB560091CDBC /* BienvenidaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355C79A72B4AEB560091CDBC /* BienvenidaView.swift */; };
 		355C79AB2B4B25320091CDBC /* HistoryVsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355C79AA2B4B25320091CDBC /* HistoryVsView.swift */; };
@@ -66,6 +70,8 @@
 		3503AB322B403907003C535C /* PlayersVsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersVsView.swift; sourceTree = "<group>"; };
 		3503AB342B403B26003C535C /* FilaPlayerVsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilaPlayerVsView.swift; sourceTree = "<group>"; };
 		350F584A2B474D0D0064ECF2 /* WinnerVsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerVsView.swift; sourceTree = "<group>"; };
+		3539EC0B2B4B195300C421D7 /* VistaAlexia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaAlexia.swift; sourceTree = "<group>"; };
+		3539EC0E2B4B1CFC00C421D7 /* VistaHaaland.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaHaaland.swift; sourceTree = "<group>"; };
 		355C79A72B4AEB560091CDBC /* BienvenidaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BienvenidaView.swift; sourceTree = "<group>"; };
 		355C79AA2B4B25320091CDBC /* HistoryVsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVsView.swift; sourceTree = "<group>"; };
 		355DCAC32B0BB0C800C1BE54 /* LPS1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPS1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +209,8 @@
 				3593B2E62B27699800305621 /* EstadisticaView.swift */,
 				35B5AE682B49BF0B00599FB3 /* PlayerDetailView.swift */,
 				355C79A72B4AEB560091CDBC /* BienvenidaView.swift */,
+				3539EC0B2B4B195300C421D7 /* VistaAlexia.swift */,
+				3539EC0E2B4B1CFC00C421D7 /* VistaHaaland.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,12 +345,14 @@
 				355DCAE72B0BC76A00C1BE54 /* ImagePicker.swift in Sources */,
 				355DCAEB2B0BC7D200C1BE54 /* RegisterView.swift in Sources */,
 				3503AB352B403B26003C535C /* FilaPlayerVsView.swift in Sources */,
+				3539EC0F2B4B1CFC00C421D7 /* VistaHaaland.swift in Sources */,
 				355DCAE32B0BBE8F00C1BE54 /* CoreDataManager.swift in Sources */,
 				3503AB302B402D72003C535C /* VsView.swift in Sources */,
 				355DCAF32B0BC86C00C1BE54 /* PlayersView.swift in Sources */,
 				35DEB0592B45D31F005E28F8 /* StatsView.swift in Sources */,
 				35B5AE692B49BF0B00599FB3 /* PlayerDetailView.swift in Sources */,
 				3503AB332B403907003C535C /* PlayersVsView.swift in Sources */,
+				3539EC0C2B4B195300C421D7 /* VistaAlexia.swift in Sources */,
 				35C6A3162B1503250079FB18 /* FilaPlayerView.swift in Sources */,
 				3593B2E72B27699800305621 /* EstadisticaView.swift in Sources */,
 				355DCAC72B0BB0C800C1BE54 /* ProyectoLPSApp.swift in Sources */,
@@ -367,12 +377,14 @@
 				35B5AE542B498E2D00599FB3 /* ImagePicker.swift in Sources */,
 				35B5AE552B498E2D00599FB3 /* RegisterView.swift in Sources */,
 				35B5AE562B498E2D00599FB3 /* FilaPlayerVsView.swift in Sources */,
+				3539EC102B4B1CFC00C421D7 /* VistaHaaland.swift in Sources */,
 				35B5AE572B498E2D00599FB3 /* CoreDataManager.swift in Sources */,
 				35B5AE582B498E2D00599FB3 /* VsView.swift in Sources */,
 				35B5AE592B498E2D00599FB3 /* PlayersView.swift in Sources */,
 				35B5AE5A2B498E2D00599FB3 /* StatsView.swift in Sources */,
 				35B5AE6A2B49BF0B00599FB3 /* PlayerDetailView.swift in Sources */,
 				35B5AE5B2B498E2D00599FB3 /* PlayersVsView.swift in Sources */,
+				3539EC0D2B4B195300C421D7 /* VistaAlexia.swift in Sources */,
 				35B5AE5C2B498E2D00599FB3 /* FilaPlayerView.swift in Sources */,
 				35B5AE5D2B498E2D00599FB3 /* EstadisticaView.swift in Sources */,
 				35B5AE5E2B498E2D00599FB3 /* ProyectoLPSApp.swift in Sources */,

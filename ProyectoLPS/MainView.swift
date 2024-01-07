@@ -59,14 +59,14 @@ struct MainView: View {
                             .tabItem{
                                 Image("perfil")
                                 Text("Profile")
-                            }
+                            }.tag(3)
                     #if LPS2
                         VsView(user: user)
                             .environmentObject(proyectoVM)
                             .tabItem{
                                 Image("perfil")
                                 Text("Vs")
-                            }
+                            }.tag(4)
                     #endif
                     }
                 }

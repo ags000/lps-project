@@ -42,6 +42,7 @@ struct Stats: Decodable {
     let pac: Speed
     let pas: Pase
     let phy: Fisico
+    let sho: Tiro
     let defensiveAwareness: DefensiveAwareness
     let dribbling: Dribbling
     let freeKickAccuracy: FreeKickAccuracy

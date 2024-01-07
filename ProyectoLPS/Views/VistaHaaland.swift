@@ -1,15 +1,14 @@
 //
-//  EstadisticaView.swift
+//  VistaHaaland.swift
 //  ProyectoLPS
 //
-//  Created by Aula03 on 11/12/23.
+//  Created by Aula03 on 7/1/24.
 //
 
 import SwiftUI
 
-struct PlayerDetailView: View {
-    //@Binding var vistaMbappe : Bool
-    var player : Player
+struct VistaHaaland: View {
+    @Binding var vistaHaaland : Bool
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack() {
@@ -19,44 +18,52 @@ struct PlayerDetailView: View {
                 .frame(width: 400, height: 210)
                 .background(Color(red: 0, green: 0, blue: 0).opacity(0.50))
                 //.offset(y:-80)
+            
+            
+            
             ZStack{
-                   Image("Degradado")
-                       .ignoresSafeArea()
-                       .frame(width: 400, height: 210)
-                       .offset(y:-388)
-                   VStack(alignment: .leading){
-                       Text("\(player.firstName) \(player.lastName)")
-                        .frame(width: 200, alignment: .leading)
+                Image("Degradado")
+                    .ignoresSafeArea()
+                    .frame(width: 400, height: 210)
+                    .offset(y:-388)
+                VStack(alignment: .leading){
+                    Text("Erling Haaland")
                         .fontWeight(.bold)
-                        .font(.system(size: 28))
+                        .font(.system(size: 30))
                         .foregroundColor(.white)
-                        .lineLimit(2)
-                        .truncationMode(.tail)
-                       Text("\(player.overallRating)")
-                            .fontWeight(.bold)
-                            .font(.system(size: 32))
-                            .foregroundColor(.white)
-                       Text(player.position.shortLabel)
-                            .fontWeight(.bold)
-                            .font(.system(size: 22))
-                            .foregroundColor(.white)
-                   }
-                    .frame(minWidth: 250, maxWidth: 250)
-                    .offset(x:-70, y:-120)
-                    //Imagen cabecera
-                var avatarUrl = player.avatarUrl.replacingOccurrences(of: "50w", with: "150w")                // Sustituir "50w" por "150w"
-                AsyncImage(url: URL(string:avatarUrl))
-                        .shadow(color: .black, radius:5)
-                        .offset(x:100, y:-105)
-                        .zIndex(1)
-                AsyncImage(url: URL(string: player.team.imageUrl))
-                        .shadow(color: .white, radius:10)
-                        .offset(x:115, y:-170)
+                    Text("91")
+                        .fontWeight(.bold)
+                        .font(.system(size: 32))
+                        .foregroundColor(Color(red: 0.84, green: 0.84, blue: 0.84))
+                    Text("Media")
+                        .fontWeight(.bold)
+                        .font(.system(size: 22))
+                        .foregroundColor(Color(red: 0.84, green: 0.84, blue: 0.84))
+                }
+                .offset(x:-85, y:-120)
+                //Imagen cabecera
+                AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p239085.png.adapt.150w.png"))
+                    .shadow(color: .black, radius:5)
+                    .offset(x:100, y:-105)
+                    .zIndex(1)
+                AsyncImage(url: URL(string: "https://images.ctfassets.net/rs6bgs1g8dbr/hn2H64k3KVpJ3Wqpyleus/2d33f6e09f42515c20dd2a70600a3c26/10.png"))
+                    .shadow(color: .white, radius:10)
+                    .offset(x:115, y:-170)
+                
+                
+                
+                
             }
             HStack{
                 Text("Estadísticas")
                     .font(.system(size:15))
-                    .padding(.leading, -190.0)
+                    .padding(.leading, -160.0)
+                
+                Button("Volver"){
+                    vistaHaaland=false
+                    presentationMode.wrappedValue.dismiss()
+                }
+                
                 }
                 .frame(width:1000, height: 36)
                 .background(.gray)
@@ -68,7 +75,7 @@ struct PlayerDetailView: View {
                     //Primer rectangulo
                     VStack(){
                         Image("speed")
-                        Text("\(player.stats.pac.value)")
+                        Text("89")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                         
@@ -82,7 +89,7 @@ struct PlayerDetailView: View {
                     //Segundo rectangulo
                     VStack{
                         Image("tiro")
-                        Text("\(player.stats.sho.value)")
+                        Text("93")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                         
@@ -97,7 +104,7 @@ struct PlayerDetailView: View {
                     //Primer rectangulo
                     VStack(){
                         Image("pase")
-                        Text("\(player.stats.pas.value)")
+                        Text("66")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                     }
@@ -109,7 +116,7 @@ struct PlayerDetailView: View {
                     //Segundo rectangulo
                     VStack{
                         Image("regate")
-                        Text("\(player.stats.dribbling.value)")
+                        Text("80")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                         
@@ -125,7 +132,7 @@ struct PlayerDetailView: View {
                     //Primer rectangulo
                     VStack(){
                         Image("defensa")
-                        Text("\(player.stats.def.value)")
+                        Text("45")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                     }
@@ -137,7 +144,8 @@ struct PlayerDetailView: View {
                     //Segundo rectangulo
                     VStack{
                         Image("fisico")
-                        Text("\(player.stats.phy.value)")
+                        // .offset(x: -78.27, y: -192.29)
+                        Text("88")
                             .font(Font.custom("Roboto", size: 24))
                             .foregroundColor(Color(red: 0.33, green: 0.33, blue: 0.33))
                     }
@@ -160,10 +168,3 @@ struct PlayerDetailView: View {
             .background(.white)
     }
 }
-
-
-/*struct PlayerDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlayerDetailView()
-    }
-}*/
