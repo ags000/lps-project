@@ -64,7 +64,9 @@ struct MainView: View {
                         VsView(user: user)
                             .environmentObject(proyectoVM)
                             .tabItem{
-                                Image("perfil")
+                                Image("jugadores")
+                                    .resizable()
+                                    .frame(width: 10, height: 10)
                                 Text("Vs")
                             }.tag(4)
                     #endif
