@@ -93,7 +93,7 @@ struct Versus: View{
             .shadow(
                 color: Color(red: 0.65, green: 0.19, blue: 0.14, opacity: 0.25), radius: 10
             )
-            .task {
+            .onAppear {
                 vsArray = getVersusArray(user: user, vm: proyectoVM)
                 
             }
@@ -102,23 +102,78 @@ struct Versus: View{
              .foregroundColor(.white)
              .offset(x: -0.50, y: 187)
         HStack{
+            if let firstVersus = vsArray.last {
+                
+                AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p\(firstVersus.idPlayer2).png.adapt.50w.png"))
+                    
+                    
+                    .overlay(
+                        Group {
+                            if firstVersus.ganador == 2 {
+                                Rectangle()
+                                    .frame(height: 4)
+                                    .foregroundColor(Color.green)
+                                   
+                                
+                            }
+                        },
+                        
+                        alignment: .bottom
+                    )
+
+                
+                    .task{
+                        print(firstVersus.idPlayer1)
+                        print("First versus")
+                    }
+            } else {
+                Text("No encontrado.")
+                
+            }
             
         }
              .foregroundColor(.clear)
              .frame(width: 114, height: 140)
              .background(
-                AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p\(String(describing: vsArray.last?.idPlayer2)).png.adapt.50w.png"))
+                
+               // not required player's image here.
              )
              .cornerRadius(12)
              .offset(x: 130, y: 230)
              .shadow(
                  color: Color(red: 1, green: 1, blue: 1, opacity: 0.50), radius: 40, x: 12
              )
-        HStack{}
+        HStack{
+            
+            if let firstVersus = vsArray.last {
+                
+                AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p\(firstVersus.idPlayer1).png.adapt.50w.png"))
+                
+                    .overlay(
+                        Group {
+                            if firstVersus.ganador == 1 {
+                                Rectangle()
+                                    .frame(height: 4)
+                                    .foregroundColor(Color.green)
+                            }
+                        },
+                        
+                        alignment: .bottom
+                        
+                    )
+                    .task{
+                        print(firstVersus.idPlayer1)
+                        print("First versus")
+                    }
+            } else {
+                Text("No encontrado.")
+                
+            }
+        }
              .foregroundColor(.clear)
              .frame(width: 114, height: 140)
              .background(
-                 AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p\(String(describing: vsArray.last?.idPlayer1)).png.adapt.50w.png"))
+                // not required image.
              )
              .cornerRadius(12)
              .offset(x: -130, y: 230)
