@@ -104,16 +104,16 @@ struct Versus: View{
         HStack{
             if let firstVersus = vsArray.last {
                 
-                AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p\(firstVersus.idPlayer2).png.adapt.50w.png"))
+                AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p\(firstVersus.idPlayer2).png.adapt.150w.png"))
                     
                     
                     .overlay(
                         Group {
                             if firstVersus.ganador == 2 {
                                 Rectangle()
-                                    .frame(height: 4)
+                                    .frame(height: 12)
                                     .foregroundColor(Color.green)
-                                   
+                                    .shadow(color:Color.green, radius: 70)
                                 
                             }
                         },
@@ -147,14 +147,15 @@ struct Versus: View{
             
             if let firstVersus = vsArray.last {
                 
-                AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p\(firstVersus.idPlayer1).png.adapt.50w.png"))
+                AsyncImage(url: URL(string: "https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-portraits/p\(firstVersus.idPlayer1).png.adapt.150w.png"))
                 
                     .overlay(
                         Group {
                             if firstVersus.ganador == 1 {
                                 Rectangle()
-                                    .frame(height: 4)
+                                    .frame(height: 12)
                                     .foregroundColor(Color.green)
+                                    .shadow(color:Color.green, radius: 70)
                             }
                         },
                         
