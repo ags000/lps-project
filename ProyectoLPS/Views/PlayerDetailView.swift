@@ -1,5 +1,5 @@
 //
-//  EstadisticaView.swift
+//  PlayerDetailView.swift
 //  ProyectoLPS
 //
 //  Created by Aula03 on 11/12/23.
@@ -44,14 +44,19 @@ struct PlayerDetailView: View {
                     .frame(minWidth: 250, maxWidth: 250)
                     .offset(x:-70, y:-120)
                     //Imagen cabecera
-                var avatarUrl = player.avatarUrl.replacingOccurrences(of: "50w", with: "150w")                // Sustituir "50w" por "150w"
+                let avatarUrl = player.avatarUrl.replacingOccurrences(of: "50w", with: "150w")              
                 AsyncImage(url: URL(string:avatarUrl))
                         .shadow(color: .black, radius:5)
-                        .offset(x:100, y:-105)
+                        .offset(x:115, y:-105)
                         .zIndex(1)
                 AsyncImage(url: URL(string: player.team.imageUrl))
                         .shadow(color: .white, radius:10)
                         .offset(x:115, y:-170)
+                AsyncImage(url: URL(string:player.nationality.imageUrl))
+                    .frame(width: 70, height: 35)
+                        .shadow(color: .black, radius:5)
+                        .offset(x:-40, y:-80)
+                        .zIndex(1)
             }
             HStack{
                 Text("Estadísticas")

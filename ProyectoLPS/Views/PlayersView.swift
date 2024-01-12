@@ -73,7 +73,6 @@ struct PlayersView: View {
                         numPage = 1
                         query = ""
                     }
-                    //.padding(.bottom, 20)
                 }
                 HStack{
                     Button {

@@ -18,9 +18,13 @@ struct Player: Identifiable, Decodable {
     let avatarUrl: String
     let stats: Stats
     let team: TeamPlayer
-    
+    let nationality: Nacionalidad
 }
 
+struct Nacionalidad: Decodable{
+    let label: String
+    let imageUrl: String
+}
 
 
 struct Page: Decodable {
