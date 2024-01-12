@@ -162,7 +162,10 @@ struct PlayerDetailView: View {
             
         }
         .frame(width: 430, height: 932.0)
-            .background(.white)
+        .background(.white)
+        .onDisappear{
+            presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 
