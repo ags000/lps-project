@@ -28,10 +28,13 @@ struct TeamsView: View {
                     HStack {
                         Spacer()
                         TextField("Buscar equipo", text: $buscarEquipo)
-                                                .background(.gray)
-                                                .cornerRadius(50)
-                                                .frame(width: 150)
-                                                .padding(2)
+                            .padding(5)
+                            .padding(.leading, 5)
+                            .overlay(RoundedRectangle(cornerRadius: 50).stroke(Color.gray, lineWidth: 1))
+                            .background(Color.gray)
+                            .cornerRadius(50)
+                            .disableAutocorrection(true)
+                            .frame(width: 200, height: 5)
                     }
                     
                     Text("Equipos")

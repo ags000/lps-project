@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject var proyectoVM : ViewModel
     @State var user: UserEntity? = nil
-    @State var isLogged: Bool = false
+    @State var isLogged: Bool = true
     @State var isRegister: Bool = false
     @State var section: Int = 0
     @State var vistaOG: Bool = false
@@ -64,10 +64,8 @@ struct MainView: View {
                         VsView(user: user)
                             .environmentObject(proyectoVM)
                             .tabItem{
-                                Image("jugadores")
-                                    .resizable()
-                                    .frame(width: 10, height: 10)
-                                Text("Vs")
+                                Image("iconoVS")
+                                Text("Versus")
                             }.tag(4)
                     #endif
                     }
